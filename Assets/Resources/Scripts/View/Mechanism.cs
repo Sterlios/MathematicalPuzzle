@@ -5,7 +5,7 @@ namespace CookingNumbers
 {
 	public class Mechanism : MonoBehaviour
 	{
-		private MathPazzle _pazzle;
+		private MathPuzzle _puzzle;
 		private List<Wheel> _wheels;
 		private Wheel _currentWheel;
 
@@ -18,27 +18,27 @@ namespace CookingNumbers
 
 		private void OnEnable()
 		{
-			_pazzle.ShiftedUp += OnSwiftedUp;
-			_pazzle.ShiftedDown += OnSwiftedDown;
-			_pazzle.Moved += ChooseWheel;
+			_puzzle.ShiftedUp += OnSwiftedUp;
+			_puzzle.ShiftedDown += OnSwiftedDown;
+			_puzzle.Moved += ChooseWheel;
 
-			ChooseWheel(_pazzle.CurrentColumn);
+			ChooseWheel(_puzzle.CurrentColumn);
 		}
 
 		private void OnDisable()
 		{
-			if (_pazzle != null)
+			if (_puzzle != null)
 			{
-				_pazzle.ShiftedUp -= OnSwiftedUp;
-				_pazzle.ShiftedDown -= OnSwiftedDown;
-				_pazzle.Moved -= ChooseWheel;
+				_puzzle.ShiftedUp -= OnSwiftedUp;
+				_puzzle.ShiftedDown -= OnSwiftedDown;
+				_puzzle.Moved -= ChooseWheel;
 			}
 		}
 
-		public Mechanism Initialize(MathPazzle pazzle, List<Wheel> wheels, ResultCell resultCell)
+		public Mechanism Initialize(MathPuzzle puzzle, List<Wheel> wheels, ResultCell resultCell)
 		{
 			_wheels = wheels;
-			_pazzle = pazzle;
+			_puzzle = puzzle;
 
 			TakeWheelsParent();
 			resultCell.transform.parent = transform;

@@ -1,5 +1,5 @@
 // Simplified version of the SDF Surface shader :
-// - No support for Bevel, Bump or envmap
+// - No support for Bevel, Bump or envpuzzle
 // - Diffuse only lighting
 // - Fully supports only 1 directional light. Other lights can affect it, but it will be per-vertex/SH.
 
@@ -59,7 +59,7 @@ SubShader {
 	Cull [_CullMode]
 
 	CGPROGRAM
-	#pragma surface PixShader Lambert alpha:blend vertex:VertShader noforwardadd nolightmap nodirlightmap
+	#pragma surface PixShader Lambert alpha:blend vertex:VertShader noforwardadd nolightpuzzle nodirlightpuzzle
 	#pragma target 3.0
 	#pragma shader_feature __ GLOW_ON
 

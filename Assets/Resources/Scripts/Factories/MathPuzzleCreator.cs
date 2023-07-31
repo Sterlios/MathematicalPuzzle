@@ -2,17 +2,17 @@
 
 namespace CookingNumbers
 {
-	public class MathPazzleCreator
+	public class MathPuzzleCreator
 	{
 		private static readonly Random _random = new();
 
-		public MathPazzle Create(int goal, int rawCount, int columnCount)
+		public MathPuzzle Create(int goal, int rawCount, int columnCount)
 		{
 			int[,] numbers = CreateArray(goal, rawCount, columnCount);
 
 			numbers = Shuffle(numbers);
 
-			return new MathPazzle(numbers, goal);
+			return new MathPuzzle(numbers, goal);
 		}
 
 		private int[,] CreateArray(int goal, int rawCount, int columnCount)

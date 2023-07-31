@@ -1,4 +1,4 @@
-Shader "TextMeshPro/Bitmap Custom Atlas" {
+Shader "TextMeshPro/Bitpuzzle Custom Atlas" {
 
 Properties {
 	_MainTex		("Font Atlas", 2D) = "white" {}
@@ -139,5 +139,5 @@ SubShader{
 	}
 }
 
-	CustomEditor "TMPro.EditorUtilities.TMP_BitmapShaderGUI"
+	CustomEditor "TMPro.EditorUtilities.TMP_BitpuzzleShaderGUI"
 }

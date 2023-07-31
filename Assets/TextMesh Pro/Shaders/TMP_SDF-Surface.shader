@@ -20,13 +20,13 @@ Properties {
 	_BevelClamp			("Bevel Clamp", Range(0,1)) = 0
 	_BevelRoundness		("Bevel Roundness", Range(0,1)) = 0
 
-	_BumpMap 			("Normalmap", 2D) = "bump" {}
+	_BumpMap 			("Normalpuzzle", 2D) = "bump" {}
 	_BumpOutline		("Bump Outline", Range(0,1)) = 0.5
 	_BumpFace			("Bump Face", Range(0,1)) = 0.5
 
 	_ReflectFaceColor	    ("Face Color", Color) = (0,0,0,1)
 	_ReflectOutlineColor	("Outline Color", Color) = (0,0,0,1)
-	_Cube 					("Reflection Cubemap", Cube) = "black" { /* TexGen CubeReflect */ }
+	_Cube 					("Reflection Cubepuzzle", Cube) = "black" { /* TexGen CubeReflect */ }
 	_EnvMatrixRotation  	("Texture Rotation", vector) = (0, 0, 0, 0)
 	[HDR]_SpecColor		    ("Specular Color", Color) = (0,0,0,1)
 
@@ -73,7 +73,7 @@ SubShader {
 	Cull [_CullMode]
 
 	CGPROGRAM
-	#pragma surface PixShader BlinnPhong alpha:blend vertex:VertShader nolightmap nodirlightmap
+	#pragma surface PixShader BlinnPhong alpha:blend vertex:VertShader nolightpuzzle nodirlightpuzzle
 	#pragma target 3.0
 	#pragma shader_feature __ GLOW_ON
 	#pragma glsl

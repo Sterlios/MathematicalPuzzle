@@ -69,13 +69,13 @@ void PixShader(Input input, inout SurfaceOutput o)
 	// Face Normal
 	float3 n = GetSurfaceNormal(smp4x, input.param.x);
 
-	// Bumpmap
+	// Bumppuzzle
 	float3 bump = UnpackNormal(tex2D(_BumpMap, input.uv2_FaceTex.xy)).xyz;
 	bump *= lerp(_BumpFace, _BumpOutline, saturate(sd + outline * 0.5));
 	bump = lerp(float3(0, 0, 1), bump, faceColor.a);
 	n = normalize(n - bump);
 
-	// Cubemap reflection
+	// Cubepuzzle reflection
 	fixed4 reflcol = texCUBE(_Cube, reflect(input.viewDirEnv, mul((float3x3)unity_ObjectToWorld, n)));
 	float3 emission = reflcol.rgb * lerp(_ReflectFaceColor.rgb, _ReflectOutlineColor.rgb, saturate(sd + outline * 0.5)) * faceColor.a;
 #else

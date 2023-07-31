@@ -27,13 +27,13 @@ Properties {
 	_Diffuse			("Diffuse", Range(0,1)) = 0.5
 	_Ambient			("Ambient", Range(1,0)) = 0.5
 
-	_BumpMap 			("Normal map", 2D) = "bump" {}
+	_BumpMap 			("Normal puzzle", 2D) = "bump" {}
 	_BumpOutline		("Bump Outline", Range(0,1)) = 0
 	_BumpFace			("Bump Face", Range(0,1)) = 0
 
 	_ReflectFaceColor	("Reflection Color", Color) = (0,0,0,1)
 	_ReflectOutlineColor("Reflection Color", Color) = (0,0,0,1)
-	_Cube 				("Reflection Cubemap", Cube) = "black" { /* TexGen CubeReflect */ }
+	_Cube 				("Reflection Cubepuzzle", Cube) = "black" { /* TexGen CubeReflect */ }
 	_EnvMatrixRotation	("Texture Rotation", vector) = (0, 0, 0, 0)
 
 

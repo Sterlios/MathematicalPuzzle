@@ -36,7 +36,6 @@ namespace CookingNumbers
 			_index = index;
 			_cells = cells;
 			_angle = (float)Math.Round(_maxAngle / _cells.Count, _digitsCount);
-			Debug.Log($"angle = {_angle}");
 
 			CalculateSize();
 			TakeCellsParent();

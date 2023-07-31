@@ -6,15 +6,15 @@ namespace CookingNumbers
 {
 	public class Level : MonoBehaviour
 	{
-		private MathPazzleCreator _mapCreator;
+		private MathPuzzleCreator _puzzleCreator;
 		private CellCreator _cellCreator;
 		private WheelCreator _wheelCreator;
 		private ResultCellCreator _resultCellCreator;
 		private MechanismCreator _mechanismCreator;
 
-		private MathPazzleController _mapController;
+		private MathPuzzleController _puzzleController;
 		private WinPanel _winPanel;
-		private MathPazzle _map;
+		private MathPuzzle _puzzle;
 
 		private readonly int _goal = 50;
 		private readonly int _wheelsCount = 5;
@@ -23,13 +23,13 @@ namespace CookingNumbers
 		private void Awake()
 		{
 			//TODO вернутьс€, когда по€витс€ бутстрап и загрузка сцен
-			_mapCreator = new MathPazzleCreator();
+			_puzzleCreator = new MathPuzzleCreator();
 			_cellCreator = new CellCreator();
 			_wheelCreator = new WheelCreator();
 			_resultCellCreator = new ResultCellCreator();
 			_mechanismCreator = new MechanismCreator();
 
-			_mapController = new MathPazzleController(new MapControl());
+			_puzzleController = new MathPuzzleController(new MapControl());
 
 			_winPanel = FindObjectOfType<WinPanel>();
 			_winPanel.gameObject.Deactivate();
@@ -39,16 +39,14 @@ namespace CookingNumbers
 		private void OnEnable()
 		{
 			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
-			_map = _mapCreator.Create(_goal, _raysCount, _wheelsCount);
+			_puzzle = _puzzleCreator.Create(_goal, _raysCount, _wheelsCount);
 			ResultCell resultCell = _resultCellCreator.Create(_goal);
-			List<Wheel> wheels = GenerateWheels(_map);
+			List<Wheel> wheels = GenerateWheels(_puzzle);
 
-			_ = _mechanismCreator.Create(spawnPoint, _map, wheels, resultCell);
+			_ = _mechanismCreator.Create(spawnPoint, _puzzle, wheels, resultCell);
 
-			_mapController.Initialize(_map);
-			_map.Resolved += Finish;
-
-			Debug.Log(_map);
+			_puzzleController.Initialize(_puzzle);
+			_puzzle.Resolved += Finish;
 		}
 
 		private void Finish()
@@ -57,10 +55,10 @@ namespace CookingNumbers
 			_winPanel.gameObject.Activate();
 		}
 
-		public void Initialize(MathPazzleController mapController, MathPazzleCreator mapCreator, CellCreator cellCreator, WheelCreator wheelCreator, ResultCellCreator resultCellCreator, MechanismCreator mechanismCreator)
+		public void Initialize(MathPuzzleController puzzleController, MathPuzzleCreator puzzleCreator, CellCreator cellCreator, WheelCreator wheelCreator, ResultCellCreator resultCellCreator, MechanismCreator mechanismCreator)
 		{
-			_mapController = mapController;
-			_mapCreator = mapCreator;
+			_puzzleController = puzzleController;
+			_puzzleCreator = puzzleCreator;
 			_cellCreator = cellCreator;
 			_wheelCreator = wheelCreator;
 			_resultCellCreator = resultCellCreator;
@@ -69,25 +67,25 @@ namespace CookingNumbers
 			gameObject.Activate();
 		}
 
-		private List<Wheel> GenerateWheels(MathPazzle map)
+		private List<Wheel> GenerateWheels(MathPuzzle puzzle)
 		{
 			List<Wheel> wheels = new(_wheelsCount);
 
 			for (int i = 0; i < _wheelsCount; i++)
 			{
-				List<Cell> cells = GenerateCells(map, i);
+				List<Cell> cells = GenerateCells(puzzle, i);
 				wheels.Add(_wheelCreator.Create(i, cells));
 			}
 
 			return wheels;
 		}
 
-		private List<Cell> GenerateCells(MathPazzle map, int wheelIndex)
+		private List<Cell> GenerateCells(MathPuzzle puzzle, int wheelIndex)
 		{
 			List<Cell> cells = new(_raysCount);
 
 			for (int i = 0; i < _raysCount; i++)
-				cells.Add(_cellCreator.Create(map.GetValue(i, wheelIndex)));
+				cells.Add(_cellCreator.Create(puzzle.GetValue(i, wheelIndex)));
 
 			return cells;
 		}

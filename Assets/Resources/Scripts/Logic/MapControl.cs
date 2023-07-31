@@ -139,14 +139,12 @@ public partial class @MapControl : IInputActionCollection2, IDisposable
         UnityEngine.Object.Destroy(asset);
     }
 
-    public InputBinding? bindingMask
-    {
+    public InputBinding? bindingMask {
         get => asset.bindingMask;
         set => asset.bindingMask = value;
     }
 
-    public ReadOnlyArray<InputDevice>? devices
-    {
+    public ReadOnlyArray<InputDevice>? devices {
         get => asset.devices;
         set => asset.devices = value;
     }
@@ -245,11 +243,11 @@ public partial class @MapControl : IInputActionCollection2, IDisposable
     }
     public PlayerActions @Player => new PlayerActions(this);
     private int m_KeyboardSchemeIndex = -1;
-    public InputControlScheme KeyboardScheme
-    {
+    public InputControlScheme KeyboardScheme {
         get
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            if (m_KeyboardSchemeIndex == -1)
+                m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }

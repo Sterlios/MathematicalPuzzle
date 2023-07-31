@@ -2,7 +2,7 @@
 
 namespace CookingNumbers
 {
-	public class MathPazzle
+	public class MathPuzzle
 	{
 		private readonly int[,] _numbers;
 		private readonly int _goal;
@@ -12,7 +12,7 @@ namespace CookingNumbers
 		public event Action ShiftedDown;
 		public event Action Resolved;
 
-		public MathPazzle(int[,] numbers, int goal)
+		public MathPuzzle(int[,] numbers, int goal)
 		{
 			_numbers = numbers;
 			_goal = goal;
@@ -77,30 +77,6 @@ namespace CookingNumbers
 				sum += _numbers[raw, j];
 
 			return sum;
-		}
-
-		public override string ToString() //TODO временный метод для отображения в консоли
-		{
-			string text = "{";
-
-			for (int i = 0; i < _numbers.GetLength(0); i++)
-			{
-				text += "{";
-
-				for (int j = 0; j < _numbers.GetLength(1); j++)
-				{
-					text += _numbers[i, j];
-
-					if (j < _numbers.GetLength(1) - 1)
-						text += ", ";
-				}
-
-				text += "}";
-			}
-
-			text += "}";
-
-			return text;
 		}
 	}
 }
