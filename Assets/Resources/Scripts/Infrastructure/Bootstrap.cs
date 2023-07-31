@@ -11,23 +11,4 @@ namespace CookingNumbers
 			game.Run();
 		}
 	}
-
-	internal class BootstrapState : State
-	{
-		public BootstrapState(params Transition[] transitions) : base(transitions)
-		{
-		}
-	}
-
-	internal class GameStateMachineCreator
-	{
-		public StateMachine Create()
-		{
-			BootstrapState bootstrapState = new BootstrapState();
-
-			StateMachine game = new StateMachine(bootstrapState);
-
-			return game;
-		}
-	}
 }
