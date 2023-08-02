@@ -1,27 +1,29 @@
 ﻿
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CookingNumbers
 {
-	[RequireComponent(typeof(Renderer))]
 	internal class Curtain : MonoBehaviour, ICurtain
  	{
 		[SerializeField] private float _fadeInSpeed;
 		
 		private Coroutine _coroutine;
-		private Material _material;
+		private Image _image;
 
 		private void Awake()
 		{
-			_material = GetComponent<Renderer>().material;
+			DontDestroyOnLoad(this);
+
+			_image = GetComponentInChildren<Image>();
 		}
 
 		public void Show()
 		{
 			gameObject.Activate();
 
-			_material.color = new Color(_material.color.r, _material.color.g, _material.color.b, 1);
+			_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 1);
 		}
 
 		public void Hide()
@@ -34,13 +36,13 @@ namespace CookingNumbers
 
 		private IEnumerator FadeIn()
 		{
-			Color target = new Color(_material.color.r, _material.color.g, _material.color.b, 0);
+			float targetAlpha = 0;
 
-			while (_material.color.a > target.a)
+			while (_image.color.a > targetAlpha)
 			{
-				float newAlpha = _material.color.a - _fadeInSpeed * Time.deltaTime;
+				float newAlpha = _image.color.a - _fadeInSpeed * Time.deltaTime;
 
-				_material.color = new Color(_material.color.r, _material.color.g, _material.color.b, newAlpha);
+				_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, newAlpha);
 
 				yield return null;
 			}
