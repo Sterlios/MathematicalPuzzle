@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +6,8 @@ using UnityEngine;
 public class CurtainText : MonoBehaviour
 {
 	[SerializeField] private float _blinkingSpeed;
+
+	private Coroutine _coroutine;
 
 	private TMP_Text _text;
 
@@ -16,28 +18,33 @@ public class CurtainText : MonoBehaviour
 
 	private void OnEnable()
 	{
-		Blink();
+		if (_coroutine is not null)
+			StopCoroutine(_coroutine);
+
+		_coroutine = StartCoroutine(Blink());
 	}
 
-	private void Blink()
+	private void OnDisable()
+	{
+		StopCoroutine(_coroutine);
+	}
+
+	public IEnumerator Blink()
 	{
 		while (enabled)
 		{
-			FadeIn();
-			Appear();
+			while (_text.color.a > 0)
+			{
+				ChengeColor(-_blinkingSpeed);
+				yield return null;
+			}
+
+			while (_text.color.a < 1)
+			{
+				ChengeColor(_blinkingSpeed);
+				yield return null;
+			}
 		}
-	}
-
-	private void Appear()
-	{
-		while (_text.color.a < 1)
-			ChengeColor(_blinkingSpeed);
-	}
-
-	private void FadeIn()
-	{
-		while (_text.color.a > 0)
-			ChengeColor(-_blinkingSpeed);
 	}
 
 	private void ChengeColor(float blinkingSpeed)

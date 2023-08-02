@@ -10,18 +10,21 @@ namespace CookingNumbers
 		[SerializeField] private float _fadeInSpeed;
 		
 		private Coroutine _coroutine;
+		private CurtainText _text;
 		private Image _image;
 
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
 
+			_text = GetComponentInChildren<CurtainText>();
 			_image = GetComponentInChildren<Image>();
 		}
 
 		public void Show()
 		{
 			gameObject.Activate();
+			_text.gameObject.Activate();
 
 			_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 1);
 		}
@@ -46,6 +49,9 @@ namespace CookingNumbers
 
 				yield return null;
 			}
+
+			gameObject.Deactivate();
+			_text.gameObject.Deactivate();
 		}
 	}
 }
