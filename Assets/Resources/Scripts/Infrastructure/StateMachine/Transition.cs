@@ -6,7 +6,9 @@ namespace CookingNumbers
 	{
 		private readonly State _nextState;
 
-		public event Action<State> Opened;
+		private bool _isOpen;
+
+		public State NextState => _isOpen ? _nextState : null;
 
 		protected Transition(State nextState)
 		{
@@ -18,7 +20,12 @@ namespace CookingNumbers
 
 		protected void Open()
 		{
-			Opened?.Invoke(_nextState);
+			_isOpen = true;
+		}
+
+		protected void Close()
+		{
+			_isOpen = false;
 		}
 	}
 }

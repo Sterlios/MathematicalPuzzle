@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace CookingNumbers
@@ -8,28 +7,28 @@ namespace CookingNumbers
 	{
 		private readonly List<Transition> _transitions;
 
-		public event Action<State> Transited;
-		
+		public State NextState {
+			get
+			{
+				foreach (Transition transition in _transitions)
+				{
+					State nextState = transition.NextState;
+
+					if (nextState is not null)
+						return nextState;
+				}
+
+				return null;
+			}
+		}
+
 		public State(params Transition[] transitions)
 		{
 			_transitions = transitions.ToList();
 		}
 
-		public void Enter()
-		{
-			foreach (Transition transition in _transitions)
-				transition.Opened += Exit;
-		}
+		public abstract void Start();
 
-		private void Exit(State nextState)
-		{
-			if (nextState == null)
-				return;
-
-			foreach (Transition transition in _transitions)
-				transition.Opened -= Exit;
-
-			Transited?.Invoke(nextState);
-		}
+		public abstract void Stop();
 	}
 }

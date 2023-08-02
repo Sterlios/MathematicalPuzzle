@@ -2,11 +2,11 @@
 {
 	internal class GameStateMachineCreator
 	{
-		public StateMachine Create()
+		public StateMachine Create(ICoroutineRunner coroutineRunner)
 		{
 			BootstrapState bootstrapState = new BootstrapState();
 
-			StateMachine game = new StateMachine(bootstrapState);
+			StateMachine game = new StateMachine(coroutineRunner, bootstrapState);
 
 			return game;
 		}
