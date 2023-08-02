@@ -55,7 +55,13 @@ namespace CookingNumbers
 			_winPanel.gameObject.Activate();
 		}
 
-		public void Initialize(MathPuzzleController puzzleController, MathPuzzleCreator puzzleCreator, CellCreator cellCreator, WheelCreator wheelCreator, ResultCellCreator resultCellCreator, MechanismCreator mechanismCreator)
+		public void Initialize(
+			MathPuzzleController puzzleController,
+			MathPuzzleCreator puzzleCreator,
+			CellCreator cellCreator,
+			WheelCreator wheelCreator,
+			ResultCellCreator resultCellCreator,
+			MechanismCreator mechanismCreator)
 		{
 			_puzzleController = puzzleController;
 			_puzzleCreator = puzzleCreator;

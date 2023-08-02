@@ -27,7 +27,8 @@ namespace CookingNumbers
 		public void ShiftUp()
 		{
 			for (int i = 0; i < _numbers.GetLength(0) - 1; i++)
-				(_numbers[i, CurrentColumn], _numbers[i + 1, CurrentColumn]) = (_numbers[i + 1, CurrentColumn], _numbers[i, CurrentColumn]);
+				(_numbers[i, CurrentColumn], _numbers[i + 1, CurrentColumn]) = 
+					(_numbers[i + 1, CurrentColumn], _numbers[i, CurrentColumn]);
 
 			ShiftedUp?.Invoke();
 			TryFinish();
@@ -36,7 +37,8 @@ namespace CookingNumbers
 		public void ShiftDown()
 		{
 			for (int i = _numbers.GetLength(0) - 1; i > 0; i--)
-				(_numbers[i, CurrentColumn], _numbers[i - 1, CurrentColumn]) = (_numbers[i - 1, CurrentColumn], _numbers[i, CurrentColumn]);
+				(_numbers[i, CurrentColumn], _numbers[i - 1, CurrentColumn]) = 
+					(_numbers[i - 1, CurrentColumn], _numbers[i, CurrentColumn]);
 
 			ShiftedDown?.Invoke();
 			TryFinish();
