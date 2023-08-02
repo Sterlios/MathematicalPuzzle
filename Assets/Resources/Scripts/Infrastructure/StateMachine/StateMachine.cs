@@ -16,8 +16,9 @@ namespace CookingNumbers
 
 		public StateMachine(ICoroutineRunner coroutineRunner, State firstState)
 		{
-			if (_firstState == null)
+			if (firstState == null)
 				throw new ArgumentNullException("First state cannot be null.");
+
 			_coroutineRunner = coroutineRunner;
 			_firstState = firstState;
 		}
