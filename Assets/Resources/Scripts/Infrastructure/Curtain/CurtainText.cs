@@ -31,15 +31,18 @@ public class CurtainText : MonoBehaviour
 
 	public IEnumerator Blink()
 	{
+		float minAlpha = 0.1f;
+		float maxAlpha = 1f;
+
 		while (enabled)
 		{
-			while (_text.color.a > 0.1f)
+			while (_text.color.a > minAlpha)
 			{
 				ChengeColor(-_blinkingSpeed);
 				yield return null;
 			}
 
-			while (_text.color.a < 1)
+			while (_text.color.a < maxAlpha)
 			{
 				ChengeColor(_blinkingSpeed);
 				yield return null;
