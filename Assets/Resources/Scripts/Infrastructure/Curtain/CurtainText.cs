@@ -33,7 +33,7 @@ public class CurtainText : MonoBehaviour
 	{
 		while (enabled)
 		{
-			while (_text.color.a > 0)
+			while (_text.color.a > 0.1f)
 			{
 				ChengeColor(-_blinkingSpeed);
 				yield return null;
