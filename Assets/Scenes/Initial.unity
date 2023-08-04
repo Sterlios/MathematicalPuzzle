@@ -130,18 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 94012581279948779, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
-      propertyPath: _fadeInSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2001697354408413004, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
-      propertyPath: _blinkingSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2169792542858077656, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 2967889078090324655, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -225,6 +213,10 @@ PrefabInstance:
     - target: {fileID: 2967889078090324655, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668349317665506419, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.6477966
       objectReference: {fileID: 0}
     - target: {fileID: 7394291104014789624, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
       propertyPath: m_Name

@@ -19,6 +19,8 @@ namespace CookingNumbers
 
 			_text = GetComponentInChildren<CurtainText>();
 			_image = GetComponentInChildren<Image>();
+
+			gameObject.Deactivate();
 		}
 
 		public void Show()

@@ -110,11 +110,11 @@ namespace CookingNumbers
 
 		private IEnumerator RotateRoutine(float angle)
 		{
-			const int StepsCount = 10;
+			const int StepsCount = 300;
 			float angleStep = (float)Math.Round(angle * (-1) / StepsCount, _digitsCount);
 			float correctingEpsilon = 0.0005f;
 
-			while (Mathf.Abs(transform.rotation.eulerAngles.y - _currentAngle) > _epsilon)
+			while (true)//(Mathf.Abs(transform.rotation.eulerAngles.y - _currentAngle) > _epsilon)
 			{
 				transform.Rotate(Quaternion.AngleAxis(angleStep, Vector3.up).eulerAngles);
 
