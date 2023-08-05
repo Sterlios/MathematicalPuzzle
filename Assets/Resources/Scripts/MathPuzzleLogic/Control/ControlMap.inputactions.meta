@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c93bc12b3d7e4f741a245bc3de3af86f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: Assets/Resources/Scripts/MathPuzzleLogic/Control/ControlMap.cs
+  wrapperClassName: ControlMap
+  wrapperCodeNamespace: MathPuzzleLogic.Control

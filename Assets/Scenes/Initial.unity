@@ -214,10 +214,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3668349317665506419, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1.6477966
-      objectReference: {fileID: 0}
     - target: {fileID: 7394291104014789624, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
       propertyPath: m_Name
       value: Curtain
@@ -265,7 +261,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 842358458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c991a7e618d663d448cd0105e6360909, type: 3}
+  m_Script: {fileID: 11500000, guid: e6de3632af9d89c4f963d3d3bdd96856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1592716637
