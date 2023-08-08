@@ -12,6 +12,8 @@ namespace UnityObjects.Scene
 {
 	public class Level : MonoBehaviour
 	{
+		private static readonly System.Random _random = new System.Random();
+
 		private MathPuzzleCreator _puzzleCreator;
 		private CellCreator _cellCreator;
 		private WheelCreator _wheelCreator;
@@ -22,24 +24,15 @@ namespace UnityObjects.Scene
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
 
-		private readonly int _goal = 50;
-		private readonly int _wheelsCount = 5;
-		private readonly int _raysCount = 11;
+		private int _goal;
+		private int _wheelsCount;
+		private int _raysCount;
 
 		private void Awake()
 		{
-			//TODO вернутьс€, когда по€витс€ бутстрап и загрузка сцен
-			_puzzleCreator = new MathPuzzleCreator();
-			_cellCreator = new CellCreator();
-			_wheelCreator = new WheelCreator();
-			_resultCellCreator = new ResultCellCreator();
-			_mechanismCreator = new MechanismCreator();
-
-			_puzzleController = new Controller(new ControlMap());
-
 			_winPanel = FindObjectOfType<WinPanel>();
 			_winPanel.gameObject.Deactivate();
-			//gameObject.Deactivate();
+			gameObject.Deactivate();
 		}
 
 		private void OnEnable()
@@ -62,6 +55,8 @@ namespace UnityObjects.Scene
 		}
 
 		public void Initialize(
+			int wheelsCount,
+			int raysCount,
 			Controller puzzleController,
 			MathPuzzleCreator puzzleCreator,
 			CellCreator cellCreator,
@@ -69,6 +64,10 @@ namespace UnityObjects.Scene
 			ResultCellCreator resultCellCreator,
 			MechanismCreator mechanismCreator)
 		{
+			_wheelsCount = wheelsCount;
+			_raysCount = raysCount;
+			_goal = CalculateGoal();
+
 			_puzzleController = puzzleController;
 			_puzzleCreator = puzzleCreator;
 			_cellCreator = cellCreator;
@@ -77,6 +76,15 @@ namespace UnityObjects.Scene
 			_mechanismCreator = mechanismCreator;
 
 			gameObject.Activate();
+		}
+
+		private int CalculateGoal()
+		{
+			int minGoal = 4;
+			int maxGoal = 9;
+			int goalMultiply = 10;
+
+			return _random.Next(minGoal, maxGoal) * goalMultiply;
 		}
 
 		private List<Wheel> GenerateWheels(MathPuzzle puzzle)
