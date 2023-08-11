@@ -7,13 +7,23 @@ namespace MathPuzzleLogic.Factory
 	{
 		private static readonly Random _random = new();
 
-		public MathPuzzle Create(int goal, int rawCount, int columnCount)
+		public MathPuzzle Create(int rawCount, int columnCount)
 		{
+			int goal = CalculateGoal();
 			int[,] numbers = CreateArray(goal, rawCount, columnCount);
 
 			numbers = Shuffle(numbers);
 
 			return new MathPuzzle(numbers, goal);
+		}
+
+		private int CalculateGoal()
+		{
+			int minGoal = 4;
+			int maxGoal = 9;
+			int goalMultiply = 10;
+
+			return _random.Next(minGoal, maxGoal) * goalMultiply;
 		}
 
 		private int[,] CreateArray(int goal, int rawCount, int columnCount)

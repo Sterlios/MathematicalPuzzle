@@ -1,7 +1,6 @@
 using Extention.UnityExtention;
 using MathPuzzleLogic.Control;
 using MathPuzzleLogic.Logic;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityObjects.LevelObjects.Factories;
 using UnityObjects.LevelObjects.Objects;
@@ -57,15 +56,6 @@ namespace UnityObjects.Scene
 			_mechanismCreator = mechanismCreator;
 
 			gameObject.Activate();
-		}
-
-		private int CalculateGoal()
-		{
-			int minGoal = 4;
-			int maxGoal = 9;
-			int goalMultiply = 10;
-
-			return _random.Next(minGoal, maxGoal) * goalMultiply;
 		}
 	}
 }
