@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using StateMachine.Transitions;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace StateMachine
+namespace StateMachine.States
 {
 	public abstract class State
 	{
-		private readonly List<Transition> _transitions;
+		private List<Transition> _transitions;
 
 		public State NextState {
 			get
@@ -22,7 +23,7 @@ namespace StateMachine
 			}
 		}
 
-		public State(params Transition[] transitions)
+		public void Initialize(params Transition[] transitions)
 		{
 			_transitions = transitions.ToList();
 		}

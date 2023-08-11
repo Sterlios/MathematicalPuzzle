@@ -5,7 +5,6 @@ namespace MathPuzzleLogic.Logic
 	public class MathPuzzle
 	{
 		private readonly int[,] _numbers;
-		private readonly int _goal;
 
 		public event Action<int> Moved;
 		public event Action ShiftedUp;
@@ -15,10 +14,13 @@ namespace MathPuzzleLogic.Logic
 		public MathPuzzle(int[,] numbers, int goal)
 		{
 			_numbers = numbers;
-			_goal = goal;
+			Goal = goal;
 			CurrentColumn = 0;
 		}
 
+		public int RaysCount => _numbers.GetLength(0);
+		public int WheelsCount => _numbers.GetLength(1);
+		public int Goal { get; private set; }
 		public int CurrentColumn { get; private set; }
 
 		public int GetValue(int rayIndex, int wheelIndex) =>
@@ -65,7 +67,7 @@ namespace MathPuzzleLogic.Logic
 		private void TryFinish()
 		{
 			for (int i = 0; i < _numbers.GetLength(0); i++)
-				if (SumLine(i) != _goal)
+				if (SumLine(i) != Goal)
 					return;
 
 			Resolved?.Invoke();

@@ -1,16 +1,17 @@
-﻿using System;
+﻿using StateMachine.States;
+using System;
 
-namespace StateMachine
+namespace StateMachine.Transitions
 {
 	public abstract class Transition
 	{
-		private readonly State _nextState;
+		private State _nextState;
 
 		private bool _isOpen;
 
 		public State NextState => _isOpen ? _nextState : null;
 
-		protected Transition(State nextState)
+		public void Initialize(State nextState)
 		{
 			if (nextState == null)
 				throw new ArgumentNullException("Next state cannot be null.");

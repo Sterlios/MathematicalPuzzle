@@ -1,11 +1,9 @@
-﻿namespace StateMachine
+﻿using StateMachine.Transitions;
+
+namespace StateMachine.States
 {
 	public class BootstrapState : State
 	{
-		public BootstrapState(params Transition[] transitions) : base(transitions)
-		{
-		}
-
 		public override void Start()
 		{
 		}

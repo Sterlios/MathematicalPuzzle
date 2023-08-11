@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StateMachine.States;
+using System;
 using System.Collections;
 
 namespace StateMachine
@@ -18,7 +19,7 @@ namespace StateMachine
 
 		public IEnumerator Update()
 		{
-			Run(); 
+			Start(); 
 
 			while (_currentState is not null)
 			{
@@ -28,7 +29,7 @@ namespace StateMachine
 			}
 		}
 
-		private void Run()
+		private void Start()
 		{
 			Transit(_firstState);
 		}
