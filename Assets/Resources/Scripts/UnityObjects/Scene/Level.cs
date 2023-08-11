@@ -13,9 +13,6 @@ namespace UnityObjects.Scene
 	{
 		private static readonly System.Random _random = new System.Random();
 
-		private CellCreator _cellCreator;
-		private WheelCreator _wheelCreator;
-		private ResultCellCreator _resultCellCreator;
 		private MechanismCreator _mechanismCreator;
 
 		private Controller _puzzleController;
@@ -32,10 +29,8 @@ namespace UnityObjects.Scene
 		private void OnEnable()
 		{
 			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
-			ResultCell resultCell = _resultCellCreator.Create(_puzzle.Goal);
-			List<Wheel> wheels = GenerateWheels();
 
-			_ = _mechanismCreator.Create(spawnPoint, _puzzle, wheels, resultCell);
+			_ = _mechanismCreator.Create(spawnPoint, _puzzle);
 
 			_puzzleController.Initialize(_puzzle);
 			_puzzle.Resolved += Finish;
@@ -55,17 +50,10 @@ namespace UnityObjects.Scene
 		public void Initialize(
 			MathPuzzle puzzle,
 			Controller puzzleController,
-			CellCreator cellCreator,
-			WheelCreator wheelCreator,
-			ResultCellCreator resultCellCreator,
 			MechanismCreator mechanismCreator)
 		{
 			_puzzle = puzzle;
-
 			_puzzleController = puzzleController;
-			_cellCreator = cellCreator;
-			_wheelCreator = wheelCreator;
-			_resultCellCreator = resultCellCreator;
 			_mechanismCreator = mechanismCreator;
 
 			gameObject.Activate();
@@ -78,29 +66,6 @@ namespace UnityObjects.Scene
 			int goalMultiply = 10;
 
 			return _random.Next(minGoal, maxGoal) * goalMultiply;
-		}
-
-		private List<Wheel> GenerateWheels()
-		{
-			List<Wheel> wheels = new(_puzzle.WheelsCount);
-
-			for (int i = 0; i < _puzzle.WheelsCount; i++)
-			{
-				List<Cell> cells = GenerateCells(i);
-				wheels.Add(_wheelCreator.Create(i, cells));
-			}
-
-			return wheels;
-		}
-
-		private List<Cell> GenerateCells(int wheelIndex)
-		{
-			List<Cell> cells = new(_puzzle.RaysCount);
-
-			for (int i = 0; i < _puzzle.RaysCount; i++)
-				cells.Add(_cellCreator.Create(_puzzle.GetValue(i, wheelIndex)));
-
-			return cells;
 		}
 	}
 }
