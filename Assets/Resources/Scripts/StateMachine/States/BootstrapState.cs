@@ -1,6 +1,4 @@
-﻿using StateMachine.Transitions;
-
-namespace StateMachine.States
+﻿namespace StateMachine.States
 {
 	public class BootstrapState : State
 	{

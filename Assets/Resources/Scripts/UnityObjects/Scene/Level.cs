@@ -40,12 +40,6 @@ namespace UnityObjects.Scene
 			_puzzle.Resolved -= Finish;
 		}
 
-		private void Finish()
-		{
-			Time.timeScale = 0;
-			_winPanel.gameObject.Activate();
-		}
-
 		public void Initialize(
 			MathPuzzle puzzle,
 			Controller puzzleController,
@@ -56,6 +50,12 @@ namespace UnityObjects.Scene
 			_mechanismCreator = mechanismCreator;
 
 			gameObject.Activate();
+		}
+
+		private void Finish()
+		{
+			Time.timeScale = 0;
+			_winPanel.gameObject.Activate();
 		}
 	}
 }

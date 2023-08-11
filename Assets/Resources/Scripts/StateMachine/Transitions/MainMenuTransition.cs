@@ -1,6 +1,4 @@
-﻿using StateMachine.States;
-
-namespace StateMachine.Transitions
+﻿namespace StateMachine.Transitions
 {
 	public class MainMenuTransition : Transition
 	{
