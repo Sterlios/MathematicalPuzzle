@@ -8,7 +8,7 @@ using UnityObjects.Scene.Panels;
 
 namespace UnityObjects.Scene
 {
-	public class Level : MonoBehaviour
+	public class Level : MonoBehaviour, IScene
 	{
 		private static readonly System.Random _random = new System.Random();
 
@@ -22,17 +22,22 @@ namespace UnityObjects.Scene
 		{
 			_winPanel = FindObjectOfType<WinPanel>();
 			_winPanel.gameObject.Deactivate();
-			gameObject.Deactivate();
 		}
 
 		private void OnEnable()
 		{
-			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
+			if (_mechanismCreator is not null)
+			{
+				SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
 
-			_ = _mechanismCreator.Create(spawnPoint, _puzzle);
+				_ = _mechanismCreator.Create(spawnPoint, _puzzle);
+			}
 
-			_puzzleController.Initialize(_puzzle);
-			_puzzle.Resolved += Finish;
+			if (_puzzle is not null)
+			{
+				_puzzleController.Initialize(_puzzle);
+				_puzzle.Resolved += Finish;
+			}
 		}
 
 		private void OnDisable()
@@ -48,8 +53,6 @@ namespace UnityObjects.Scene
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
-
-			gameObject.Activate();
 		}
 
 		private void Finish()

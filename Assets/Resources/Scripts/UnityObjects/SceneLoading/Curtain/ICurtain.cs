@@ -1,4 +1,4 @@
-﻿namespace UnityObjects.Scene.Panels
+﻿namespace UnityObjects.SceneLoading.Loading
 {
 	internal interface ICurtain
 	{

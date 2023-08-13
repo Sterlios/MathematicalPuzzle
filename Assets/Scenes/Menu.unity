@@ -677,6 +677,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 225496932413976638, guid: d9838d6ca62734449b9168cb9d55b93b, type: 3}
   m_PrefabInstance: {fileID: 1341855007}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &228905104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 228905106}
+  - component: {fileID: 228905105}
+  m_Layer: 0
+  m_Name: Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &228905105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228905104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a372ea5b15b9949b3960d0e6f7887d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &228905106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228905104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1350.1125, y: 495.7276, z: 219.68263}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &237857026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1221,8 +1265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 6
-  _rayCount: 9
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1001 &402729616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2066,8 +2110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 5
-  _rayCount: 8
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1 &1180872318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,8 +2442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 7
-  _rayCount: 9
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1 &1191202018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,8 +2692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 6
-  _rayCount: 8
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1001 &1341855007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2881,8 +2925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 8
-  _rayCount: 11
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1 &1379834542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,8 +3791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 4
-  _rayCount: 7
+  _wheelsCount: 6
+  _raysCount: 6
 --- !u!1001 &1698979814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3980,8 +4024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 7
-  _rayCount: 10
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1 &1782736751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,8 +4178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 8
-  _rayCount: 10
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1 &1928713040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4522,8 +4566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 4
-  _rayCount: 5
+  _wheelsCount: 5
+  _raysCount: 5
 --- !u!1 &2027029850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,8 +4999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelCount: 9
-  _rayCount: 12
+  _wheelsCount: 0
+  _raysCount: 0
 --- !u!1 &2107724574
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,6 +5261,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1426576938}
     m_Modifications:
+    - target: {fileID: 1518653158, guid: d9838d6ca62734449b9168cb9d55b93b, type: 3}
+      propertyPath: _raysCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518653158, guid: d9838d6ca62734449b9168cb9d55b93b, type: 3}
+      propertyPath: _wheelsCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 225496932413976625, guid: d9838d6ca62734449b9168cb9d55b93b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 94012581279948779, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
+      propertyPath: _fadeInSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169792542858077656, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2967889078090324655, guid: a9c185b2b08fc0049ba3d142d44a7778, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -1,7 +1,9 @@
 {
     "name": "StateMachine",
     "rootNamespace": "StateMachine",
-    "references": [],
+    "references": [
+        "GUID:1a60c55cd9d297b4e8e376191cb48daa"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

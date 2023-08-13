@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityObjects.Scene.Panels
+namespace UnityObjects.SceneLoading.Loading
 {
 	public class Curtain : MonoBehaviour, ICurtain
  	{
@@ -20,8 +20,6 @@ namespace UnityObjects.Scene.Panels
 
 			_text = GetComponentInChildren<CurtainText>();
 			_image = GetComponentInChildren<Image>();
-			Show();
-			//gameObject.Deactivate();
 		}
 
 		public void Show()
@@ -44,12 +42,14 @@ namespace UnityObjects.Scene.Panels
 		{
 			float targetAlpha = 0;
 
+			_text.gameObject.Deactivate();
+
 			while (_image.color.a > targetAlpha)
 			{
 				float newAlpha = _image.color.a - _fadeInSpeed * Time.deltaTime;
 
 				_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, newAlpha);
-
+			
 				yield return null;
 			}
 

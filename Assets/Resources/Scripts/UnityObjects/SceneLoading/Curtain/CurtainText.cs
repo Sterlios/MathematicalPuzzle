@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace UnityObjects.Scene.Panels
+namespace UnityObjects.SceneLoading.Loading
 {
 	[RequireComponent(typeof(TMP_Text))]
 	public class CurtainText : MonoBehaviour

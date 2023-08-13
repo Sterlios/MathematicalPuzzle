@@ -1,47 +1,47 @@
-﻿using StateMachine.States;
-using System;
-using System.Collections;
+﻿//using StateMachine.States;
+//using System;
+//using System.Collections;
 
-namespace StateMachine
-{
-	public class BaseStateMachine
-	{
-		private readonly State _firstState;
-		private State _currentState;
+//namespace StateMachine
+//{
+//	public class BaseStateMachine
+//	{
+//		private readonly State _firstState;
+//		private State _currentState;
 
-		public BaseStateMachine(State firstState)
-		{
-			if (firstState == null)
-				throw new ArgumentNullException("First state cannot be null.");
+//		public BaseStateMachine(State firstState)
+//		{
+//			if (firstState == null)
+//				throw new ArgumentNullException("First state cannot be null.");
 
-			_firstState = firstState;
-		}
+//			_firstState = firstState;
+//		}
 
-		public IEnumerator Update()
-		{
-			Start(); 
+//		public IEnumerator Update()
+//		{
+//			Start(); 
 
-			while (_currentState is not null)
-			{
-				Transit(_currentState.NextState);
+//			while (_currentState is not null)
+//			{
+//				Transit(_currentState.NextState);
 
-				yield return null;
-			}
-		}
+//				yield return null;
+//			}
+//		}
 
-		private void Start()
-		{
-			Transit(_firstState);
-		}
+//		private void Start()
+//		{
+//			Transit(_firstState);
+//		}
 
-		private void Transit(State nextState)
-		{
-			if (nextState == null)
-				return;
+//		private void Transit(State nextState)
+//		{
+//			if (nextState == null)
+//				return;
 
-			_currentState?.Stop();
-			_currentState = nextState;
-			_currentState.Start();
-		}
-	}
-}
+//			_currentState?.Stop();
+//			_currentState = nextState;
+//			_currentState.Start();
+//		}
+//	}
+//}

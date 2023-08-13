@@ -1,32 +1,49 @@
-﻿using StateMachine.States;
-using System;
+﻿//using SceneLoading;
+//using StateMachine.States;
+//using System;
 
-namespace StateMachine.Transitions
-{
-	public abstract class Transition
-	{
-		private State _nextState;
+//namespace StateMachine.Transitions
+//{
+//	public abstract class Transition
+//	{
+//		private readonly SceneLoader _sceneLoader;
+//		private readonly string _sceneName;
 
-		private bool _isOpen;
+//		private State _nextState;
+//		private bool _isOpen;
 
-		public State NextState => _isOpen ? _nextState : null;
+//		public Transition(SceneLoader sceneLoader, string sceneName)
+//		{
+//			_sceneLoader = sceneLoader;
+//			_sceneName = sceneName;
+//		}
 
-		public void Initialize(State nextState)
-		{
-			if (nextState == null)
-				throw new ArgumentNullException("Next state cannot be null.");
+//		public void Initialize(State nextState)
+//		{
+//			if (nextState == null)
+//				throw new ArgumentNullException("Next state cannot be null.");
 
-			_nextState = nextState;
-		}
+//			_nextState = nextState;
+//		}
 
-		protected void Open()
-		{
-			_isOpen = true;
-		}
+//		public State Transit()
+//		{
+//			if (!_isOpen)
+//				return null;
 
-		protected void Close()
-		{
-			_isOpen = false;
-		}
-	}
-}
+//			_sceneLoader.Load(_sceneName);
+
+//			return _nextState;
+//		}
+
+//		public void Open()
+//		{
+//			_isOpen = true;
+//		}
+
+//		public void Close()
+//		{
+//			_isOpen = false;
+//		}
+//	}
+//}

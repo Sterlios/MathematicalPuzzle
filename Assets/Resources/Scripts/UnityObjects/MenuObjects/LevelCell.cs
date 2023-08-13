@@ -7,5 +7,11 @@ namespace UnityObjects
     {
         [SerializeField] private int _wheelsCount;
         [SerializeField] private int _raysCount;
+
+
+        public void OnButtonClick()
+		{
+
+		}
     }
 }
