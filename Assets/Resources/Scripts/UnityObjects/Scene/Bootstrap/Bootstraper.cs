@@ -2,18 +2,20 @@ using UnityEngine;
 using MathPuzzleLogic.Factory;
 using UnityObjects.LevelObjects.Factories;
 using MathPuzzleLogic.Control;
-using System;
 using UnityObjects.SceneLoading;
 using UnityObjects.SceneLoading.Loading;
 
 namespace UnityObjects.Scene.Bootstrap
 {
-	public class Bootstraper : MonoBehaviour, ICoroutineRunner
+	public class Bootstraper : MonoBehaviour, ICoroutineRunner, ISceneLoader
 	{
 		private SceneLoader _sceneLoader;
 		private Controller _controller;
 		private MathPuzzleCreator _mathPuzzleCreator;
 		private MechanismCreator _mechanismCreator;
+		private MenuCreator _menuCreator;
+
+		private Coroutine _coroutine;
 
 		private void Awake()
 		{
@@ -21,6 +23,8 @@ namespace UnityObjects.Scene.Bootstrap
 
 			Curtain curtain = FindObjectOfType<Curtain>();
 			_sceneLoader = new SceneLoader(curtain);
+
+			_menuCreator = new MenuCreator();
 
 			_mathPuzzleCreator = new MathPuzzleCreator();
 
@@ -33,18 +37,30 @@ namespace UnityObjects.Scene.Bootstrap
 
 			_mechanismCreator = new MechanismCreator(wheelCreator, cellCreator, resultCellCreator);
 
-			LoadScene("Menu");
+			LoadMenu();
 		}
 
-		public void LoadScene(string sceneName)
+		public void LoadMenu()
 		{
-			_sceneLoader.Load(sceneName);
+			if (_coroutine is not null)
+				StopCoroutine(_coroutine);
+
+			_coroutine = StartCoroutine(_sceneLoader.LoadMenu(this, _menuCreator));
 		}
 
-		public void LoadScene(string sceneName, int wheelsCount, int raysCount)
+		public void LoadLevel(int wheelsCount, int raysCount)
 		{
-			_sceneLoader.Load(sceneName, wheelsCount, raysCount, _controller, _mathPuzzleCreator, _mechanismCreator);
+			if (_coroutine is not null)
+				StopCoroutine(_coroutine);
+
+			_coroutine = StartCoroutine(_sceneLoader.LoadLevel(wheelsCount, raysCount, this, _controller, _mathPuzzleCreator, _mechanismCreator));
 		}
+	}
+
+	public interface ISceneLoader
+	{
+		void LoadMenu();
+		void LoadLevel(int wheelsCount, int raysCount);
 	}
 }
 

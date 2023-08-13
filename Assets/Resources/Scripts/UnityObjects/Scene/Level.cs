@@ -4,55 +4,62 @@ using MathPuzzleLogic.Logic;
 using UnityEngine;
 using UnityObjects.LevelObjects.Factories;
 using UnityObjects.LevelObjects.Objects;
+using UnityObjects.Scene.Bootstrap;
 using UnityObjects.Scene.Panels;
 
 namespace UnityObjects.Scene
 {
-	public class Level : MonoBehaviour, IScene
+	public class Level : MonoBehaviour
 	{
-		private static readonly System.Random _random = new System.Random();
-
 		private MechanismCreator _mechanismCreator;
 
 		private Controller _puzzleController;
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
+		private ISceneLoader _sceneLoader;
 
 		private void Awake()
 		{
 			_winPanel = FindObjectOfType<WinPanel>();
 			_winPanel.gameObject.Deactivate();
+			gameObject.Deactivate();
 		}
 
 		private void OnEnable()
 		{
-			if (_mechanismCreator is not null)
-			{
-				SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
+			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
 
-				_ = _mechanismCreator.Create(spawnPoint, _puzzle);
-			}
+			_ = _mechanismCreator.Create(spawnPoint, _puzzle);
 
-			if (_puzzle is not null)
-			{
-				_puzzleController.Initialize(_puzzle);
-				_puzzle.Resolved += Finish;
-			}
+			_puzzleController.Initialize(_puzzle);
+			_puzzle.Resolved += Finish;
 		}
 
 		private void OnDisable()
 		{
+			if (_puzzle is null)
+				return; 
+
 			_puzzle.Resolved -= Finish;
 		}
 
 		public void Initialize(
+			ISceneLoader sceneLoader,
 			MathPuzzle puzzle,
 			Controller puzzleController,
 			MechanismCreator mechanismCreator)
 		{
+			_sceneLoader = sceneLoader;
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
+
+			gameObject.Activate();
+		}
+
+		public void MoveToMenu()
+		{
+			_sceneLoader.LoadMenu();
 		}
 
 		private void Finish()

@@ -2,7 +2,7 @@
 
 namespace UnityObjects.Scene.Panels
 {
-	internal class WinPanel: MonoBehaviour
+	public class WinPanel: MonoBehaviour
 	{
 
 	}

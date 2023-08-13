@@ -1,16 +1,21 @@
 ﻿using MathPuzzleLogic.Control;
 using MathPuzzleLogic.Factory;
 using MathPuzzleLogic.Logic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityObjects.LevelObjects.Factories;
 using UnityObjects.Scene;
+using UnityObjects.Scene.Bootstrap;
 using UnityObjects.SceneLoading.Loading;
 
 namespace UnityObjects.SceneLoading
 {
 	public class SceneLoader
 	{
+		private const string MenuSceneName = "Menu";
+		private const string LevelSceneName = "Level";
+
 		private readonly Curtain _curtain;
 
 		public SceneLoader(Curtain curtain)
@@ -18,31 +23,33 @@ namespace UnityObjects.SceneLoading
 			_curtain = curtain;
 		}
 
-		public void Load(string sceneName)
+		public IEnumerator LoadMenu(ISceneLoader sceneLoader, MenuCreator menuCreator)
 		{
 			_curtain.Show();
 
-			var operation = SceneManager.LoadSceneAsync(sceneName);
-			
-			while (operation.isDone)
-				continue; 
+			var operation = SceneManager.LoadSceneAsync(MenuSceneName);
+
+			while (!operation.isDone)
+				yield return null;
+
+			_ = menuCreator.Create(sceneLoader);
 
 			_curtain.Hide();
 		}
 
-		public void Load(string sceneName, int wheelsCount, int raysCount, Controller controller, MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator)
+		public IEnumerator LoadLevel(int wheelsCount, int raysCount, ISceneLoader sceneLoader, Controller controller, MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator)
 		{
 			_curtain.Show();
 
-			var operation = SceneManager.LoadSceneAsync(sceneName);
+			var operation = SceneManager.LoadSceneAsync(LevelSceneName);
 
-			while (operation.isDone)
-				continue;
+			while (!operation.isDone)
+				yield return null;
 
 			MathPuzzle puzzle = mathPuzzleCreator.Create(raysCount, wheelsCount);
-			Level level = GameObject.FindObjectOfType<Level>();
+			Level level = new GameObject().AddComponent<Level>();
 
-			level.Initialize(puzzle, controller, mechanismCreator);
+			level.Initialize(sceneLoader, puzzle, controller, mechanismCreator);
 
 			_curtain.Hide();
 		}

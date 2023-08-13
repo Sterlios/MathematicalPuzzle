@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityObjects.Scene.Bootstrap;
 
 namespace UnityObjects
 {
@@ -8,10 +9,16 @@ namespace UnityObjects
         [SerializeField] private int _wheelsCount;
         [SerializeField] private int _raysCount;
 
+        [SerializeField] private ISceneLoader _sceneLoader;
 
-        public void OnButtonClick()
+        public void Initialize(ISceneLoader sceneLoader)
 		{
+            _sceneLoader = sceneLoader;
+		}
 
+		public void OnButtonClick()
+		{
+            _sceneLoader.LoadLevel(_wheelsCount, _raysCount);
 		}
     }
 }
