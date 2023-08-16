@@ -42,6 +42,8 @@ namespace UnityObjects.SceneLoading.Loading
 		{
 			float targetAlpha = 0;
 
+			Time.timeScale = 1;
+
 			_text.gameObject.Deactivate();
 
 			while (_image.color.a > targetAlpha)
@@ -49,12 +51,11 @@ namespace UnityObjects.SceneLoading.Loading
 				float newAlpha = _image.color.a - _fadeInSpeed * Time.deltaTime;
 
 				_image.color = new Color(_image.color.r, _image.color.g, _image.color.b, newAlpha);
-			
+
 				yield return null;
 			}
 
 			gameObject.Deactivate();
-			_text.gameObject.Deactivate();
 		}
 	}
 }

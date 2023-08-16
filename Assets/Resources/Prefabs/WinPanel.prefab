@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 7525475066624189239}
   - component: {fileID: 9067028873009278814}
   - component: {fileID: 5963802215586300410}
+  - component: {fileID: 4236713094430964501}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -371,7 +372,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 7525475066624189239}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -395,6 +396,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4236713094430964501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674134543785208786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffdbb41aa5cf5641a2cccfea1555ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3898975351544109989
 GameObject:
   m_ObjectHideFlags: 0

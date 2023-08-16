@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 1258272853}
   - component: {fileID: 1258272852}
   - component: {fileID: 1258272851}
+  - component: {fileID: 1258272854}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -598,6 +599,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258272849}
   m_CullTransparentMesh: 1
+--- !u!114 &1258272854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258272849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffdbb41aa5cf5641a2cccfea1555ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1521837633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,5 +1026,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9067028873009278814, guid: e7fe4bdec8442e84f99f94d1c0ab311c, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 5463853166460195206}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7fe4bdec8442e84f99f94d1c0ab311c, type: 3}
+--- !u!114 &5463853166460195206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7525475066624189239, guid: e7fe4bdec8442e84f99f94d1c0ab311c, type: 3}
+  m_PrefabInstance: {fileID: 5463853166460195205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

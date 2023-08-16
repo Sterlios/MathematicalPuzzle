@@ -18,8 +18,11 @@ namespace UnityObjects.Scene
 		private MathPuzzle _puzzle;
 		private ISceneLoader _sceneLoader;
 
+		private BackMenuButton[] _backMenuButtons;
+
 		private void Awake()
 		{
+			_backMenuButtons = FindObjectsOfType<BackMenuButton>();
 			_winPanel = FindObjectOfType<WinPanel>();
 			_winPanel.gameObject.Deactivate();
 			gameObject.Deactivate();
@@ -49,6 +52,9 @@ namespace UnityObjects.Scene
 			Controller puzzleController,
 			MechanismCreator mechanismCreator)
 		{
+			foreach (BackMenuButton backMenuButton in _backMenuButtons)
+				backMenuButton.Initialize(sceneLoader);
+
 			_sceneLoader = sceneLoader;
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
