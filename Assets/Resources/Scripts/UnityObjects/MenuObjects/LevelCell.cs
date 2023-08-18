@@ -34,7 +34,6 @@ namespace UnityObjects
 			if (_level.Status == LevelStatus.Lock)
 				return;
 
-			Debug.Log(_sceneLoader);
 			_sceneLoader.LoadLevel(_level);
 		}
 
