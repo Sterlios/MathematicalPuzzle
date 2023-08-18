@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rowsCount: 10
   _wheelsCount: 10
-  _status: 0
+  _status: 1

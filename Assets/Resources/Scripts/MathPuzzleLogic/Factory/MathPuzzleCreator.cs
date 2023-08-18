@@ -41,7 +41,7 @@ namespace MathPuzzleLogic.Factory
 		{
 			for (int j = 0; j < numbers.GetLength(1) - 1; j++)
 			{
-				numbers[rayIndex, j] = _random.Next(0, goal / 2);
+				numbers[rayIndex, j] = _random.Next(goal / 2);
 				goal -= numbers[rayIndex, j];
 			}
 

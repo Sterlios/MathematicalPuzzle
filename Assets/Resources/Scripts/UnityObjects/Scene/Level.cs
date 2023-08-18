@@ -4,6 +4,7 @@ using MathPuzzleLogic.Logic;
 using UnityEngine;
 using UnityObjects.LevelObjects.Factories;
 using UnityObjects.LevelObjects.Objects;
+using UnityObjects.LevelObjects.UI;
 using UnityObjects.Scene.Bootstrap;
 using UnityObjects.Scene.Panels;
 
@@ -18,12 +19,16 @@ namespace UnityObjects.Scene
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
 		private ISceneLoader _sceneLoader;
+		private PuzzleControl _puzzleControl;
 
 		private BackMenuButton[] _backMenuButtons;
 
 		private void Awake()
 		{
 			_backMenuButtons = FindObjectsOfType<BackMenuButton>();
+
+			_puzzleControl = FindObjectOfType<PuzzleControl>();
+
 			_winPanel = FindObjectOfType<WinPanel>();
 			_winPanel.gameObject.Deactivate();
 			gameObject.Deactivate();
@@ -62,6 +67,7 @@ namespace UnityObjects.Scene
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
+			_puzzleControl.Initialize(_puzzle);
 
 			_levelConfig.Play();
 
