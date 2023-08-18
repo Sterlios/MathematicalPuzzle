@@ -120,8 +120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb81418191edf4b8b50d9a9ced2975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wheelsCount: 0
-  _raysCount: 0
+  _level: {fileID: 11400000, guid: 2c3f3b9aa9244bd45b13067125b6f166, type: 2}
+  _number: {fileID: 2986932054629198679}
+  _doneItem: {fileID: 4295319925518851187}
+  _notDoneItem: {fileID: 3612914174585311024}
+  _notPlayingItem: {fileID: 6344047440839879288}
+  _lockItem: {fileID: 6502379267276649005}
 --- !u!114 &1981690144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +169,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 225496932413976624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1518653158}
+        m_TargetAssemblyTypeName: UnityObjects.LevelCell, UnityObject
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2986932054629198679
 GameObject:
   m_ObjectHideFlags: 0

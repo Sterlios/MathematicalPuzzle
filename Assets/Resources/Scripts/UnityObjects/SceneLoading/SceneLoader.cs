@@ -37,7 +37,7 @@ namespace UnityObjects.SceneLoading
 			_curtain.Hide();
 		}
 
-		public IEnumerator LoadLevel(int wheelsCount, int raysCount, ISceneLoader sceneLoader, Controller controller, MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator)
+		public IEnumerator LoadLevel(ScriptableObjects.Level levelConfig, ISceneLoader sceneLoader, Controller controller, MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator)
 		{
 			_curtain.Show();
 
@@ -46,10 +46,10 @@ namespace UnityObjects.SceneLoading
 			while (!operation.isDone)
 				yield return null;
 
-			MathPuzzle puzzle = mathPuzzleCreator.Create(raysCount, wheelsCount);
+			MathPuzzle puzzle = mathPuzzleCreator.Create(levelConfig.RowsCount, levelConfig.WheelsCount);
 			Level level = new GameObject().AddComponent<Level>();
 
-			level.Initialize(sceneLoader, puzzle, controller, mechanismCreator);
+			level.Initialize(levelConfig, sceneLoader, puzzle, controller, mechanismCreator);
 
 			_curtain.Hide();
 		}

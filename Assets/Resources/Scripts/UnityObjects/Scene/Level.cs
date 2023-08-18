@@ -13,6 +13,7 @@ namespace UnityObjects.Scene
 	{
 		private MechanismCreator _mechanismCreator;
 
+		private ScriptableObjects.Level _levelConfig;
 		private Controller _puzzleController;
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
@@ -47,6 +48,7 @@ namespace UnityObjects.Scene
 		}
 
 		public void Initialize(
+			ScriptableObjects.Level levelConfig,
 			ISceneLoader sceneLoader,
 			MathPuzzle puzzle,
 			Controller puzzleController,
@@ -55,10 +57,13 @@ namespace UnityObjects.Scene
 			foreach (BackMenuButton backMenuButton in _backMenuButtons)
 				backMenuButton.Initialize(sceneLoader);
 
+			_levelConfig = levelConfig;
 			_sceneLoader = sceneLoader;
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
+
+			_levelConfig.Play();
 
 			gameObject.Activate();
 		}
@@ -70,6 +75,7 @@ namespace UnityObjects.Scene
 
 		private void Finish()
 		{
+			_levelConfig.Finish();
 			Time.timeScale = 0;
 			_winPanel.gameObject.Activate();
 		}

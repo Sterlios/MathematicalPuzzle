@@ -48,19 +48,19 @@ namespace UnityObjects.Scene.Bootstrap
 			_coroutine = StartCoroutine(_sceneLoader.LoadMenu(this, _menuCreator));
 		}
 
-		public void LoadLevel(int wheelsCount, int raysCount)
+		public void LoadLevel(ScriptableObjects.Level level)
 		{
 			if (_coroutine is not null)
 				StopCoroutine(_coroutine);
 
-			_coroutine = StartCoroutine(_sceneLoader.LoadLevel(wheelsCount, raysCount, this, _controller, _mathPuzzleCreator, _mechanismCreator));
+			_coroutine = StartCoroutine(_sceneLoader.LoadLevel(level, this, _controller, _mathPuzzleCreator, _mechanismCreator));
 		}
 	}
 
 	public interface ISceneLoader
 	{
 		void LoadMenu();
-		void LoadLevel(int wheelsCount, int raysCount);
+		void LoadLevel(ScriptableObjects.Level level);
 	}
 }
 

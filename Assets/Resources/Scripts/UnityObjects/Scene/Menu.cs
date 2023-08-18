@@ -25,10 +25,10 @@ namespace UnityObjects
 				lockedLevels[i].Open();
 		}
 
-		private List<LevelCell> GetLockedLevels(List<LevelCell> levels) => 
+		private List<LevelCell> GetLockedLevels(List<LevelCell> levels) =>
 			levels.Where(level => level.Status == LevelStatus.Lock).ToList();
 
-		private int GetNotLockAndNotDoneLevelsCount(List<LevelCell> levels) => 
+		private int GetNotLockAndNotDoneLevelsCount(List<LevelCell> levels) =>
 			levels.Where(level => level.Status != LevelStatus.Lock && level.Status != LevelStatus.Done).ToList().Count;
 	}
 }
