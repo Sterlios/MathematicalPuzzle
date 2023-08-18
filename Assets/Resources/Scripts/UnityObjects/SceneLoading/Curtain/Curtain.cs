@@ -24,6 +24,7 @@ namespace UnityObjects.SceneLoading.Loading
 
 		public void Show()
 		{
+			Debug.Log(_text);
 			gameObject.Activate();
 			_text.gameObject.Activate();
 

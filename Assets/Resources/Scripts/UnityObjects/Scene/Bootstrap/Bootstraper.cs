@@ -36,7 +36,10 @@ namespace UnityObjects.Scene.Bootstrap
 			ResultCellCreator resultCellCreator = new ResultCellCreator();
 
 			_mechanismCreator = new MechanismCreator(wheelCreator, cellCreator, resultCellCreator);
+		}
 
+		private void Start()
+		{
 			LoadMenu();
 		}
 
