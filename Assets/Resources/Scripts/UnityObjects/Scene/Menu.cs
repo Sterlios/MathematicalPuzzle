@@ -22,7 +22,8 @@ namespace UnityObjects
 			List<LevelCell> lockedLevels = GetLockedLevels(cells);
 
 			for (int i = 0; i < unlockingLevelsCount; i++)
-				lockedLevels[i].Open();
+				if(i<lockedLevels.Count)
+					lockedLevels[i].Open();
 		}
 
 		private List<LevelCell> GetLockedLevels(List<LevelCell> levels) =>

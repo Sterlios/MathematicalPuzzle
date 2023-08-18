@@ -26,7 +26,6 @@ namespace UnityObjects
 
 		public void Initialize(ISceneLoader sceneLoader)
 		{
-			Debug.Log(_sceneLoader);
 			_sceneLoader = sceneLoader;
 		}
 
