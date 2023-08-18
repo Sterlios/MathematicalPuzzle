@@ -14,7 +14,7 @@ namespace UnityObjects.Scene
 	{
 		private MechanismCreator _mechanismCreator;
 
-		private ScriptableObjects.Level _levelConfig;
+		private ScriptableObjects.LevelConfig _levelConfig;
 		private Controller _puzzleController;
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
@@ -53,9 +53,8 @@ namespace UnityObjects.Scene
 		}
 
 		public void Initialize(
-			ScriptableObjects.Level levelConfig,
+			ScriptableObjects.LevelConfig levelConfig,
 			ISceneLoader sceneLoader,
-			MathPuzzle puzzle,
 			Controller puzzleController,
 			MechanismCreator mechanismCreator)
 		{
@@ -64,7 +63,7 @@ namespace UnityObjects.Scene
 
 			_levelConfig = levelConfig;
 			_sceneLoader = sceneLoader;
-			_puzzle = puzzle;
+			_puzzle = levelConfig.Puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
 			_puzzleControl.Initialize(_puzzle);

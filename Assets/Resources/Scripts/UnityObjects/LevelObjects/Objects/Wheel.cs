@@ -110,7 +110,7 @@ namespace UnityObjects.LevelObjects.Objects
 
 		private IEnumerator RotateRoutine(float angle)
 		{
-			const int StepsCount = 50;
+			const int StepsCount = 10;
 			float angleStep = (float)Math.Round(angle * (-1) / StepsCount, _digitsCount);
 			float correctingEpsilon = 0.0005f;
 

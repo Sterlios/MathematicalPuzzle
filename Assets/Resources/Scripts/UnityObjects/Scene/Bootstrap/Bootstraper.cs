@@ -51,7 +51,7 @@ namespace UnityObjects.Scene.Bootstrap
 			_coroutine = StartCoroutine(_sceneLoader.LoadMenu(this, _menuCreator));
 		}
 
-		public void LoadLevel(ScriptableObjects.Level level)
+		public void LoadLevel(ScriptableObjects.LevelConfig level)
 		{
 			if (_coroutine is not null)
 				StopCoroutine(_coroutine);
@@ -63,7 +63,7 @@ namespace UnityObjects.Scene.Bootstrap
 	public interface ISceneLoader
 	{
 		void LoadMenu();
-		void LoadLevel(ScriptableObjects.Level level);
+		void LoadLevel(ScriptableObjects.LevelConfig level);
 	}
 }
 

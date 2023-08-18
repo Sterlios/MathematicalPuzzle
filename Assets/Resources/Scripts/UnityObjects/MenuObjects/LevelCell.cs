@@ -8,7 +8,7 @@ namespace UnityObjects
 {
 	public class LevelCell : MonoBehaviour
 	{
-		[SerializeField] private Level _level;
+		[SerializeField] private LevelConfig _level;
 		[SerializeField] private GameObject _number;
 		[SerializeField] private GameObject _doneItem;
 		[SerializeField] private GameObject _notDoneItem;

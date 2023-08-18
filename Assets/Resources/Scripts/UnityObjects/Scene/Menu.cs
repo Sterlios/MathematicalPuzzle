@@ -6,13 +6,13 @@ using UnityObjects.Scene.Bootstrap;
 
 namespace UnityObjects
 {
-    public class Menu : MonoBehaviour
-    {
+	public class Menu : MonoBehaviour
+	{
 		public void Initialize(ISceneLoader sceneLoader)
 		{
 			List<LevelCell> cells = GetComponentsInChildren<LevelCell>().ToList();
 
-			foreach(LevelCell cell in cells)
+			foreach (LevelCell cell in cells)
 				cell.Initialize(sceneLoader);
 
 			int maxNotLockAndNotDoneLevelsCount = 3;
@@ -22,7 +22,7 @@ namespace UnityObjects
 			List<LevelCell> lockedLevels = GetLockedLevels(cells);
 
 			for (int i = 0; i < unlockingLevelsCount; i++)
-				if(i<lockedLevels.Count)
+				if (i < lockedLevels.Count)
 					lockedLevels[i].Open();
 		}
 
