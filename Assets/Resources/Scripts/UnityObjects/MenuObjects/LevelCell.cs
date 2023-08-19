@@ -14,13 +14,16 @@ namespace UnityObjects
 		[SerializeField] private GameObject _notDoneItem;
 		[SerializeField] private GameObject _notPlayingItem;
 		[SerializeField] private GameObject _lockItem;
+		[SerializeField] private LevelStatus _status;
 
 		private ISceneLoader _sceneLoader;
 
-		public LevelStatus Status => _level.Status;
+		private string Key => $"{_level.RowsCount}:{_level.WheelsCount}";
+		public LevelStatus Status => _status;
 
 		private void Awake()
 		{
+			Load();
 			UpdateStatusView();
 		}
 
@@ -31,16 +34,36 @@ namespace UnityObjects
 
 		public void OnButtonClick()
 		{
-			if (_level.Status == LevelStatus.Lock)
+			if (_status == LevelStatus.Lock)
 				return;
 
+			Save();
 			_sceneLoader.LoadLevel(_level);
+		}
+
+		private void Save()
+		{
+			PlayerPrefs.SetInt(Key, (int)_status);
+			PlayerPrefs.Save();
+		}
+
+		private void Load()
+		{
+			if (PlayerPrefs.HasKey(Key))
+				_status = (LevelStatus)PlayerPrefs.GetInt(Key);
+			else
+				_status = LevelStatus.Lock;
 		}
 
 		public void Open()
 		{
-			_level.Open();
+			_status = LevelStatus.NotPlaying;
 			UpdateStatusView();
+		}
+
+		public void Finish()
+		{
+			_status = LevelStatus.Done;
 		}
 
 		private void UpdateStatusView()
@@ -51,7 +74,7 @@ namespace UnityObjects
 			_notPlayingItem.Deactivate();
 			_lockItem.Deactivate();
 
-			if (_level.Status == LevelStatus.Lock)
+			if (_status == LevelStatus.Lock)
 			{
 				_lockItem.Activate();
 				return;
@@ -59,9 +82,9 @@ namespace UnityObjects
 
 			_number.Activate();
 
-			if (_level.Status == LevelStatus.NotPlaying)
+			if (_status == LevelStatus.NotPlaying)
 				_notPlayingItem.Activate();
-			else if (_level.Status == LevelStatus.NotDone)
+			else if (_status == LevelStatus.NotDone)
 				_notDoneItem.Activate();
 			else
 				_doneItem.Activate();

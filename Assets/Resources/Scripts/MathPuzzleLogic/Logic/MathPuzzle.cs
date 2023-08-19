@@ -22,6 +22,13 @@ namespace MathPuzzleLogic.Logic
 		public int WheelsCount => _numbers.GetLength(1);
 		public int Goal { get; private set; }
 		public int CurrentColumn { get; private set; }
+		public string SaverKey => $"{RaysCount}:{WheelsCount}";
+
+		public MathPuzzleData Save() => 
+			new MathPuzzleData(_numbers, Goal);
+
+		public static MathPuzzle Load(MathPuzzleData puzzleData) => 
+			new MathPuzzle(puzzleData.Numbers, puzzleData.Goal);
 
 		public int GetValue(int rayIndex, int wheelIndex) =>
 			_numbers[rayIndex, wheelIndex];

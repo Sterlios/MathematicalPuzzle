@@ -14,7 +14,6 @@ namespace UnityObjects.Scene
 	{
 		private MechanismCreator _mechanismCreator;
 
-		private ScriptableObjects.LevelConfig _levelConfig;
 		private Controller _puzzleController;
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
@@ -38,7 +37,7 @@ namespace UnityObjects.Scene
 		{
 			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
 
-			_ = _mechanismCreator.Create(spawnPoint, _puzzle);
+			_mechanismCreator.Create(spawnPoint, _puzzle);
 
 			_puzzleController.Initialize(_puzzle);
 			_puzzle.Resolved += Finish;
@@ -53,22 +52,19 @@ namespace UnityObjects.Scene
 		}
 
 		public void Initialize(
-			ScriptableObjects.LevelConfig levelConfig,
 			ISceneLoader sceneLoader,
+			MathPuzzle puzzle,
 			Controller puzzleController,
 			MechanismCreator mechanismCreator)
 		{
 			foreach (BackMenuButton backMenuButton in _backMenuButtons)
 				backMenuButton.Initialize(sceneLoader);
 
-			_levelConfig = levelConfig;
 			_sceneLoader = sceneLoader;
-			_puzzle = levelConfig.Puzzle;
+			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
 			_puzzleControl.Initialize(_puzzle);
-
-			_levelConfig.Play();
 
 			gameObject.Activate();
 		}
@@ -80,9 +76,15 @@ namespace UnityObjects.Scene
 
 		private void Finish()
 		{
-			_levelConfig.Finish();
+			Save();
 			Time.timeScale = 0;
 			_winPanel.gameObject.Activate();
+		}
+
+		private void Save()
+		{
+			PlayerPrefs.SetInt(_puzzle.SaverKey, (int)LevelStatus.Done);
+			PlayerPrefs.Save();
 		}
 	}
 }

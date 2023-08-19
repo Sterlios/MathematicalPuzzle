@@ -15,6 +15,11 @@ namespace UnityObjects
 			foreach (LevelCell cell in cells)
 				cell.Initialize(sceneLoader);
 
+			UnlockNewLevels(cells);
+		}
+
+		private void UnlockNewLevels(List<LevelCell> cells)
+		{
 			int maxNotLockAndNotDoneLevelsCount = 3;
 			int currentNotLockAndNotDoneLevelsCount = GetNotLockAndNotDoneLevelsCount(cells);
 			int unlockingLevelsCount = maxNotLockAndNotDoneLevelsCount - currentNotLockAndNotDoneLevelsCount;

@@ -1,5 +1,6 @@
 ﻿using MathPuzzleLogic.Control;
 using MathPuzzleLogic.Factory;
+using MathPuzzleLogic.Logic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +32,7 @@ namespace UnityObjects.SceneLoading
 			while (!operation.isDone)
 				yield return null;
 
-			_ = menuCreator.Create(sceneLoader);
+			menuCreator.Create(sceneLoader);
 
 			_curtain.Hide();
 		}
@@ -45,12 +46,11 @@ namespace UnityObjects.SceneLoading
 			while (!operation.isDone)
 				yield return null;
 
-			if (levelConfig.Puzzle is null)
-				levelConfig.Initialize(mathPuzzleCreator.Create(levelConfig.RowsCount, levelConfig.WheelsCount));
-
 			Level level = new GameObject().AddComponent<Level>();
 
-			level.Initialize(levelConfig, sceneLoader, controller, mechanismCreator);
+			MathPuzzle puzzle = mathPuzzleCreator.Create(levelConfig.RowsCount, levelConfig.WheelsCount);
+
+			level.Initialize(sceneLoader, puzzle, controller, mechanismCreator);
 
 			_curtain.Hide();
 		}
