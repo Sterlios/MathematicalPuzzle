@@ -1,4 +1,5 @@
 ﻿
+using DataSource;
 using LevelScene.Objects;
 using MathPuzzleLogic.Control;
 using MathPuzzleLogic.Factory;
@@ -9,12 +10,14 @@ namespace LevelScene.Factories
 {
 	public class LevelCreator
 	{
+		private readonly ISaver _saver;
 		private readonly MathPuzzleCreator _mathPuzzleCreator;
 		private readonly MechanismCreator _mechanismCreator;
 		private readonly Controller _controller;
 
-		public LevelCreator(MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator, Controller controller)
+		public LevelCreator(ISaver saver, MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator, Controller controller)
 		{
+			_saver = saver;
 			_mathPuzzleCreator = mathPuzzleCreator;
 			_mechanismCreator = mechanismCreator;
 			_controller = controller;
@@ -26,7 +29,7 @@ namespace LevelScene.Factories
 
 			MathPuzzle puzzle = _mathPuzzleCreator.Create(rowsCount, wheelsCount);
 
-			level.Initialize(puzzle, _controller, _mechanismCreator);
+			level.Initialize(_saver, puzzle, _controller, _mechanismCreator);
 
 			return level;
 		}

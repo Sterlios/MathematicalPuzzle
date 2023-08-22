@@ -1,4 +1,4 @@
-﻿namespace LevelScene.Objects
+﻿namespace DataSource
 {
 	public enum LevelStatus
 	{

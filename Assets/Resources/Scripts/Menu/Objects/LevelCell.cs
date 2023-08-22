@@ -1,4 +1,5 @@
 
+using DataSource;
 using Extention.UnityExtention;
 using System;
 using UnityEngine;
@@ -15,6 +16,9 @@ namespace MenuScene.Objects
 		[SerializeField] private GameObject _lockItem;
 		[SerializeField] private LevelStatus _status;
 
+		private ILoader _loader;
+		private ISaver _saver;
+
 		public event Action<LevelConfig> Clicked;
 
 		public LevelConfig Config => _level;
@@ -23,8 +27,30 @@ namespace MenuScene.Objects
 
 		private void Awake()
 		{
-			Load();
+			//gameObject.Deactivate();
+		}
+
+		private void OnEnable()
+		{
+			UpdateStatus();
+
 			UpdateStatusView();
+		}
+
+		public void Initialize(ILoader loader, ISaver saver)
+		{
+			gameObject.Deactivate();
+
+			_loader = loader;
+			_saver = saver;
+
+			gameObject.Activate();
+		}
+
+		public void UpdateStatus()
+		{
+			if (_loader is not null)
+				_status = _loader.Load(Key);
 		}
 
 		public void OnButtonClick()
@@ -32,34 +58,14 @@ namespace MenuScene.Objects
 			if (_status == LevelStatus.Lock)
 				return;
 
-			Save();
-
 			Clicked?.Invoke(_level);
-		}
-
-		private void Save()
-		{
-			PlayerPrefs.SetInt(Key, (int)_status);
-			PlayerPrefs.Save();
-		}
-
-		private void Load()
-		{
-			if (PlayerPrefs.HasKey(Key))
-				_status = (LevelStatus)PlayerPrefs.GetInt(Key);
-			else
-				_status = LevelStatus.Lock;
 		}
 
 		public void Open()
 		{
 			_status = LevelStatus.NotPlaying;
+			_saver.Save(Key, _status);
 			UpdateStatusView();
-		}
-
-		public void Finish()
-		{
-			_status = LevelStatus.Done;
 		}
 
 		private void UpdateStatusView()

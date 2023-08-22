@@ -1,10 +1,7 @@
 {
-    "name": "Menu",
-    "rootNamespace": "MenuScene",
-    "references": [
-        "GUID:cc61f072eb6d09c49a054263ab341b27",
-        "GUID:9606b21458074684ea0038b50eb30cd4"
-    ],
+    "name": "DataSource",
+    "rootNamespace": "DataSource",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

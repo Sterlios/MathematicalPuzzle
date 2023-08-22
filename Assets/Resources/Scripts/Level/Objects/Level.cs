@@ -1,3 +1,4 @@
+using DataSource;
 using Extention.UnityExtention;
 using LevelScene.Factories;
 using LevelScene.UI;
@@ -16,6 +17,7 @@ namespace LevelScene.Objects
 		private WinPanel _winPanel;
 		private MathPuzzle _puzzle;
 		private PuzzleControl _puzzleControl;
+		private ISaver _saver;
 
 		private BackMenuButton[] _backMenuButtons;
 
@@ -57,10 +59,12 @@ namespace LevelScene.Objects
 		}
 
 		public void Initialize(
+			ISaver saver,
 			MathPuzzle puzzle,
 			Controller puzzleController,
 			MechanismCreator mechanismCreator)
 		{
+			_saver = saver;
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
@@ -76,15 +80,10 @@ namespace LevelScene.Objects
 
 		private void Finish()
 		{
-			Save();
+			_saver.Save(_puzzle.SaverKey, LevelStatus.Done);
+
 			Time.timeScale = 0;
 			_winPanel.gameObject.Activate();
-		}
-
-		private void Save()
-		{
-			PlayerPrefs.SetInt(_puzzle.SaverKey, (int)LevelStatus.Done);
-			PlayerPrefs.Save();
 		}
 	}
 }

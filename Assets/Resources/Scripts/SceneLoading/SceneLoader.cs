@@ -61,7 +61,7 @@ namespace SceneLoading
 			while (!operation.isDone)
 				yield return null;
 
-			_level = _levelCreator.Create(levelConfig.RowsCount, levelConfig.RowsCount);
+			_level = _levelCreator.Create(levelConfig.RowsCount, levelConfig.WheelsCount);
 
 			_level.Exited += LoadMenu;
 

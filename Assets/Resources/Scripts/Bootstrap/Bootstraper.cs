@@ -6,6 +6,7 @@ using Curtain;
 using Curtain.Factories;
 using MenuScene.Factories;
 using LevelScene.Factories;
+using DataSource;
 
 namespace Bootstrap
 {
@@ -16,6 +17,8 @@ namespace Bootstrap
 		private void Awake()
 		{
 			DontDestroyOnLoad(this);
+
+			DataSourceManager dataSourceManager = new DataSourceManager();
 
 			LoadingCurtain curtain = new CurtainCreator().Create();
 
@@ -30,8 +33,8 @@ namespace Bootstrap
 
 			MechanismCreator mechanismCreator = new MechanismCreator(wheelCreator, cellCreator, resultCellCreator);
 
-			MenuCreator menuCreator = new MenuCreator();
-			LevelCreator levelCreator = new LevelCreator(mathPuzzleCreator, mechanismCreator, controller);
+			MenuCreator menuCreator = new MenuCreator(dataSourceManager, dataSourceManager);
+			LevelCreator levelCreator = new LevelCreator(dataSourceManager, mathPuzzleCreator, mechanismCreator, controller);
 
 			_sceneLoader = new SceneLoader(curtain, this, levelCreator, menuCreator);
 		}
