@@ -1,0 +1,16 @@
+{
+    "name": "Menu",
+    "rootNamespace": "MenuScene",
+    "references": [
+        "GUID:cc61f072eb6d09c49a054263ab341b27"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

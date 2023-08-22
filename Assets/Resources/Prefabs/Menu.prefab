@@ -552,12 +552,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 998135884768585749}
-        m_TargetAssemblyTypeName: UnityObjects.WindowsController, UnityObject
+        m_TargetAssemblyTypeName: MenuScene.Objects.WindowsController, Menu
         m_MethodName: Open
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4648641140158860877}
-          m_ObjectArgumentAssemblyTypeName: UnityObjects.Window, UnityObject
+          m_ObjectArgumentAssemblyTypeName: MenuScene.Objects.Window, Menu
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1129,12 +1129,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 998135884768585749}
-        m_TargetAssemblyTypeName: UnityObjects.WindowsController, UnityObject
+        m_TargetAssemblyTypeName: MenuScene.Objects.WindowsController, Menu
         m_MethodName: Open
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6943661506208393169}
-          m_ObjectArgumentAssemblyTypeName: UnityObjects.Window, UnityObject
+          m_ObjectArgumentAssemblyTypeName: MenuScene.Objects.Window, Menu
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3340,6 +3340,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709824614277251}
   _notPlayingItem: {fileID: 3088355592810366411}
   _lockItem: {fileID: 2948602094591057310}
+  _status: 0
 --- !u!1001 &8274975661726298856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3638,6 +3639,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709824568327640}
   _notPlayingItem: {fileID: 3088355593041107088}
   _lockItem: {fileID: 2948602094838431941}
+  _status: 0
 --- !u!224 &8212242204761735897 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 225496932413976625, guid: d9838d6ca62734449b9168cb9d55b93b, type: 3}
@@ -3946,6 +3948,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709824142128929}
   _notPlayingItem: {fileID: 3088355593420870249}
   _lockItem: {fileID: 2948602095201028668}
+  _status: 0
 --- !u!1001 &8274975662208380246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4261,6 +4264,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709824110879334}
   _notPlayingItem: {fileID: 3088355593381103406}
   _lockItem: {fileID: 2948602095161139067}
+  _status: 0
 --- !u!1001 &8274975662468560628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4608,6 +4612,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709823834192324}
   _notPlayingItem: {fileID: 3088355593640762508}
   _lockItem: {fileID: 2948602094901478617}
+  _status: 0
 --- !u!1001 &8274975662688562162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4911,6 +4916,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709825803084994}
   _notPlayingItem: {fileID: 3088355593974530442}
   _lockItem: {fileID: 2948602095788251615}
+  _status: 0
 --- !u!1001 &8274975662713714882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5214,6 +5220,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709825694021618}
   _notPlayingItem: {fileID: 3088355593865466554}
   _lockItem: {fileID: 2948602095695956719}
+  _status: 0
 --- !u!1001 &8274975662828457717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5549,6 +5556,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709825670480325}
   _notPlayingItem: {fileID: 3088355594102908045}
   _lockItem: {fileID: 2948602095915711704}
+  _status: 0
 --- !u!1001 &8274975662944093736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5847,6 +5855,7 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709825521813784}
   _notPlayingItem: {fileID: 3088355594255838288}
   _lockItem: {fileID: 2948602095498605573}
+  _status: 0
 --- !u!224 &8212242204097295897 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 225496932413976625, guid: d9838d6ca62734449b9168cb9d55b93b, type: 3}
@@ -6155,3 +6164,4 @@ MonoBehaviour:
   _notDoneItem: {fileID: 4680709825303757399}
   _notPlayingItem: {fileID: 3088355594272532255}
   _lockItem: {fileID: 2948602095548989258}
+  _status: 0

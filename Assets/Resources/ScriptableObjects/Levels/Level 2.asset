@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae7146d7929cff48ade259ef5723fee, type: 3}
   m_Name: Level 2
   m_EditorClassIdentifier: 
-  _rowsCount: 5
+  _rowsCount: 4
   _wheelsCount: 5
-  _status: 3

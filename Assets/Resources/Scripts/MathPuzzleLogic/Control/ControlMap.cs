@@ -17,7 +17,7 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace MathPuzzleLogic.Control
 {
-	public partial class @ControlMap : IInputActionCollection2, IDisposable
+    public partial class @ControlMap : IInputActionCollection2, IDisposable
     {
         public InputActionAsset asset { get; }
         public @ControlMap()
@@ -112,6 +112,67 @@ namespace MathPuzzleLogic.Control
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Camera"",
+            ""id"": ""d0ef6885-cb71-4052-9012-9398d72ce626"",
+            ""actions"": [
+                {
+                    ""name"": ""Follow"",
+                    ""type"": ""Button"",
+                    ""id"": ""0663ac82-54df-4e64-acb6-8ee7ec5a2e51"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1d8b49d1-f383-47ae-8a63-f4a4fa9625bf"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Follow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""65ae22ad-a1f9-405e-b2dd-61fc7687057a"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Follow"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""f3a3e58a-c017-422e-b3c7-2cf2a10ceabe"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Follow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""bb196e03-7607-4ea9-82b4-a0378659fb58"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Follow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -134,6 +195,9 @@ namespace MathPuzzleLogic.Control
             m_Player_MoveRight = m_Player.FindAction("MoveRight", throwIfNotFound: true);
             m_Player_ShiftUp = m_Player.FindAction("ShiftUp", throwIfNotFound: true);
             m_Player_ShiftDown = m_Player.FindAction("ShiftDown", throwIfNotFound: true);
+            // Camera
+            m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+            m_Camera_Follow = m_Camera.FindAction("Follow", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -246,6 +310,39 @@ namespace MathPuzzleLogic.Control
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // Camera
+        private readonly InputActionMap m_Camera;
+        private ICameraActions m_CameraActionsCallbackInterface;
+        private readonly InputAction m_Camera_Follow;
+        public struct CameraActions
+        {
+            private @ControlMap m_Wrapper;
+            public CameraActions(@ControlMap wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Follow => m_Wrapper.m_Camera_Follow;
+            public InputActionMap Get() { return m_Wrapper.m_Camera; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+            public void SetCallbacks(ICameraActions instance)
+            {
+                if (m_Wrapper.m_CameraActionsCallbackInterface != null)
+                {
+                    @Follow.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnFollow;
+                    @Follow.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnFollow;
+                    @Follow.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnFollow;
+                }
+                m_Wrapper.m_CameraActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Follow.started += instance.OnFollow;
+                    @Follow.performed += instance.OnFollow;
+                    @Follow.canceled += instance.OnFollow;
+                }
+            }
+        }
+        public CameraActions @Camera => new CameraActions(this);
         private int m_KeyboardSchemeIndex = -1;
         public InputControlScheme KeyboardScheme
         {
@@ -255,17 +352,16 @@ namespace MathPuzzleLogic.Control
                 return asset.controlSchemes[m_KeyboardSchemeIndex];
             }
         }
-
-		ReadOnlyArray<InputDevice>? IInputActionCollection.devices { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-		ReadOnlyArray<InputControlScheme> IInputActionCollection.controlSchemes => throw new NotImplementedException();
-
-		public interface IPlayerActions
+        public interface IPlayerActions
         {
             void OnMoveLeft(InputAction.CallbackContext context);
             void OnMoveRight(InputAction.CallbackContext context);
             void OnShiftUp(InputAction.CallbackContext context);
             void OnShiftDown(InputAction.CallbackContext context);
+        }
+        public interface ICameraActions
+        {
+            void OnFollow(InputAction.CallbackContext context);
         }
     }
 }

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6568779412327080671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 059fb78fc5d7f40418808dcbcfee9020, type: 3}
+  m_Script: {fileID: 11500000, guid: cc810cf983553d84b96fd75e64dce2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _blinkingSpeed: 0.5
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 2169792542858077656}
   - component: {fileID: 5228283738797549978}
   - component: {fileID: 4650519854196649823}
-  - component: {fileID: 94012581279948779}
+  - component: {fileID: 8958213053936318735}
   m_Layer: 0
   m_Name: Curtain
   m_TagString: Untagged
@@ -286,7 +286,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &5228283738797549978
 MonoBehaviour:
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &94012581279948779
+--- !u!114 &8958213053936318735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7394291104014789624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011e6d822b1842f4a9b95ba9730b3e30, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a9e2574a94fe3848bbdccdeabaf4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeInSpeed: 1

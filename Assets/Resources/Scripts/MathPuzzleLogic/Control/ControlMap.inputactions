@@ -1,5 +1,5 @@
 {
-    "name": "MapControl",
+    "name": "ControlMap",
     "maps": [
         {
             "name": "Player",
@@ -86,6 +86,67 @@
                     "action": "ShiftDown",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "d0ef6885-cb71-4052-9012-9398d72ce626",
+            "actions": [
+                {
+                    "name": "Follow",
+                    "type": "Button",
+                    "id": "0663ac82-54df-4e64-acb6-8ee7ec5a2e51",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1d8b49d1-f383-47ae-8a63-f4a4fa9625bf",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Follow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "65ae22ad-a1f9-405e-b2dd-61fc7687057a",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Follow",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "f3a3e58a-c017-422e-b3c7-2cf2a10ceabe",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Follow",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "bb196e03-7607-4ea9-82b4-a0378659fb58",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Follow",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
