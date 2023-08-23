@@ -822,7 +822,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Are you sure?
+  m_text: 'Clear progress
+
+    Are you sure?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2af0f1223f50f664cab4e3a6162a0449, type: 2}
   m_sharedMaterial: {fileID: 8035091851385311787, guid: 2af0f1223f50f664cab4e3a6162a0449, type: 2}
@@ -849,7 +851,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.65
+  m_fontSize: 50.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
