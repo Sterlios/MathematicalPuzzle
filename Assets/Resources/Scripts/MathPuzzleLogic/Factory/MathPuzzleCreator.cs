@@ -12,7 +12,7 @@ namespace MathPuzzleLogic.Factory
 			int goal = CalculateGoal();
 			int[,] numbers = CreateArray(goal, rawCount, columnCount);
 
-			//numbers = Shuffle(numbers);
+			numbers = Shuffle(numbers);
 
 			return new MathPuzzle(numbers, goal);
 		}
