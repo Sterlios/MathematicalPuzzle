@@ -38,8 +38,6 @@ namespace LevelScene.Objects
 		{
 			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
 
-			Debug.Log(_backMenuButtons.Length);
-
 			foreach (BackMenuButton backMenuButton in _backMenuButtons)
 				backMenuButton.Clicked += MoveToMenu;
 
