@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 namespace LevelScene.UI
 {
-	public class WinPanel: MonoBehaviour
+	internal class WinPanel : MonoBehaviour
 	{
 
 	}

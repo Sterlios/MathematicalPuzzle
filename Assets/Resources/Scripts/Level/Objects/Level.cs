@@ -5,6 +5,7 @@ using LevelScene.UI;
 using MathPuzzleLogic.Control;
 using MathPuzzleLogic.Logic;
 using System;
+using System.Threading;
 using UnityEngine;
 
 namespace LevelScene.Objects
@@ -14,7 +15,7 @@ namespace LevelScene.Objects
 		private MechanismCreator _mechanismCreator;
 
 		private Controller _puzzleController;
-		private WinPanel _winPanel;
+		private FinishPanel _finishPanel;
 		private MathPuzzle _puzzle;
 		private PuzzleControl _puzzleControl;
 		private ISaver _saver;
@@ -29,14 +30,15 @@ namespace LevelScene.Objects
 
 			_puzzleControl = FindObjectOfType<PuzzleControl>();
 
-			_winPanel = FindObjectOfType<WinPanel>();
-			_winPanel.gameObject.Deactivate();
+			_finishPanel = FindObjectOfType<FinishPanel>();
 			gameObject.Deactivate();
 		}
 
 		private void OnEnable()
 		{
 			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
+
+			Debug.Log(_backMenuButtons.Length);
 
 			foreach (BackMenuButton backMenuButton in _backMenuButtons)
 				backMenuButton.Clicked += MoveToMenu;
@@ -45,6 +47,8 @@ namespace LevelScene.Objects
 
 			_puzzleController.Initialize(_puzzle);
 			_puzzle.Resolved += Finish;
+
+			_finishPanel.DeactivateAllPanels();
 		}
 
 		private void OnDisable()
@@ -75,15 +79,15 @@ namespace LevelScene.Objects
 
 		public void MoveToMenu()
 		{
+			Debug.Log("MoveToMenu");
 			Exited?.Invoke();
 		}
 
 		private void Finish()
 		{
 			_saver.Save(_puzzle.SaverKey, LevelStatus.Done);
-
-			Time.timeScale = 0;
-			_winPanel.gameObject.Activate();
+			
+			_finishPanel.ActivateWinPanel();
 		}
 	}
 }

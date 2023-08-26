@@ -6,6 +6,8 @@ namespace MathPuzzleLogic.Logic
 	{
 		private readonly int[,] _numbers;
 
+		private bool _enabled;
+
 		public event Action<int> Moved;
 		public event Action ShiftedUp;
 		public event Action ShiftedDown;
@@ -16,6 +18,7 @@ namespace MathPuzzleLogic.Logic
 			_numbers = numbers;
 			Goal = goal;
 			CurrentColumn = 0;
+			_enabled = true;
 		}
 
 		public int RaysCount => _numbers.GetLength(0);
@@ -24,51 +27,60 @@ namespace MathPuzzleLogic.Logic
 		public int CurrentColumn { get; private set; }
 		public string SaverKey => $"{RaysCount}:{WheelsCount}";
 
-		public MathPuzzleData Save() => 
-			new MathPuzzleData(_numbers, Goal);
-
-		public static MathPuzzle Load(MathPuzzleData puzzleData) => 
-			new MathPuzzle(puzzleData.Numbers, puzzleData.Goal);
-
 		public int GetValue(int rayIndex, int wheelIndex) =>
 			_numbers[rayIndex, wheelIndex];
 
 		public void ShiftUp()
 		{
-			for (int i = 0; i < _numbers.GetLength(0) - 1; i++)
-				(_numbers[i, CurrentColumn], _numbers[i + 1, CurrentColumn]) = 
-					(_numbers[i + 1, CurrentColumn], _numbers[i, CurrentColumn]);
+			if (_enabled)
+			{
+				for (int i = 0; i < _numbers.GetLength(0) - 1; i++)
+					(_numbers[i, CurrentColumn], _numbers[i + 1, CurrentColumn]) =
+						(_numbers[i + 1, CurrentColumn], _numbers[i, CurrentColumn]);
 
-			ShiftedUp?.Invoke();
-			TryFinish();
+				ShiftedUp?.Invoke();
+				TryFinish();
+			}
 		}
 
 		public void ShiftDown()
 		{
-			for (int i = _numbers.GetLength(0) - 1; i > 0; i--)
-				(_numbers[i, CurrentColumn], _numbers[i - 1, CurrentColumn]) = 
-					(_numbers[i - 1, CurrentColumn], _numbers[i, CurrentColumn]);
+			if (_enabled)
+			{
+				for (int i = _numbers.GetLength(0) - 1; i > 0; i--)
+					(_numbers[i, CurrentColumn], _numbers[i - 1, CurrentColumn]) =
+						(_numbers[i - 1, CurrentColumn], _numbers[i, CurrentColumn]);
 
-			ShiftedDown?.Invoke();
-			TryFinish();
+				ShiftedDown?.Invoke();
+				TryFinish();
+			}
 		}
 
 		public void MoveTo(int to)
 		{
-			CurrentColumn = Math.Clamp(to, 0, _numbers.GetLength(1) - 1);
-			Moved?.Invoke(CurrentColumn);
+			if (_enabled)
+			{
+				CurrentColumn = Math.Clamp(to, 0, _numbers.GetLength(1) - 1);
+				Moved?.Invoke(CurrentColumn);
+			}
 		}
 
 		public void MoveLeft()
 		{
-			CurrentColumn = CurrentColumn - 1 < 0 ? _numbers.GetLength(1) - 1 : CurrentColumn - 1;
-			Moved?.Invoke(CurrentColumn);
+			if (_enabled)
+			{
+				CurrentColumn = CurrentColumn - 1 < 0 ? _numbers.GetLength(1) - 1 : CurrentColumn - 1;
+				Moved?.Invoke(CurrentColumn);
+			}
 		}
 
 		public void MoveRight()
 		{
-			CurrentColumn = CurrentColumn + 1 > _numbers.GetLength(1) - 1 ? 0 : CurrentColumn + 1;
-			Moved?.Invoke(CurrentColumn);
+			if (_enabled)
+			{
+				CurrentColumn = CurrentColumn + 1 > _numbers.GetLength(1) - 1 ? 0 : CurrentColumn + 1;
+				Moved?.Invoke(CurrentColumn);
+			}
 		}
 
 		private void TryFinish()
@@ -77,6 +89,7 @@ namespace MathPuzzleLogic.Logic
 				if (SumLine(i) != Goal)
 					return;
 
+			_enabled = false;
 			Resolved?.Invoke();
 		}
 
