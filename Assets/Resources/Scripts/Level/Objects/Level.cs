@@ -5,7 +5,6 @@ using LevelScene.UI;
 using MathPuzzleLogic.Control;
 using MathPuzzleLogic.Logic;
 using System;
-using System.Threading;
 using UnityEngine;
 
 namespace LevelScene.Objects

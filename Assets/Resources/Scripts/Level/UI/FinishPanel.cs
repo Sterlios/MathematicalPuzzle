@@ -8,12 +8,7 @@ namespace LevelScene.UI
 	{
 		[SerializeField] private WinPanel _winPanel;
 		private Coroutine _coroutine;
-
-		private void Start()
-		{
-			//DeactivateAllPanels();
-		}
-
+		
 		public void ActivateWinPanel()
 		{
 			if (_coroutine is not null)
@@ -37,7 +32,6 @@ namespace LevelScene.UI
 				timer += Time.deltaTime;
 				yield return null;
 			}
-
 
 			Time.timeScale = 0;
 			_winPanel.gameObject.Activate();
