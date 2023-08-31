@@ -12,7 +12,10 @@ namespace LevelScene.Factories
 		private readonly CellCreator _cellCreator;
 		private readonly ResultCellCreator _resultCellCreator;
 
-		public MechanismCreator(WheelCreator wheelCreator, CellCreator cellCreator, ResultCellCreator resultCellCreator)
+		public MechanismCreator(
+			WheelCreator wheelCreator,
+			CellCreator cellCreator,
+			ResultCellCreator resultCellCreator)
 		{
 			_wheelCreator = wheelCreator;
 			_cellCreator = cellCreator;

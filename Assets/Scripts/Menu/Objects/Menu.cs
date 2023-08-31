@@ -76,6 +76,9 @@ namespace MenuScene.Objects
 			_levels.Where(level => level.Status == LevelStatus.Lock).ToList();
 
 		private int GetNotLockAndNotDoneLevelsCount() =>
-			_levels.Where(level => level.Status != LevelStatus.Lock && level.Status != LevelStatus.Done).ToList().Count;
+			_levels
+				.Where(level => level.Status != LevelStatus.Lock && level.Status != LevelStatus.Done)
+				.ToList()
+				.Count;
 	}
 }

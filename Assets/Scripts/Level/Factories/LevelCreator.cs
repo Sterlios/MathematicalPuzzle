@@ -15,7 +15,11 @@ namespace LevelScene.Factories
 		private readonly MechanismCreator _mechanismCreator;
 		private readonly Controller _controller;
 
-		public LevelCreator(ISaver saver, MathPuzzleCreator mathPuzzleCreator, MechanismCreator mechanismCreator, Controller controller)
+		public LevelCreator(
+			ISaver saver,
+			MathPuzzleCreator mathPuzzleCreator,
+			MechanismCreator mechanismCreator,
+			Controller controller)
 		{
 			_saver = saver;
 			_mathPuzzleCreator = mathPuzzleCreator;

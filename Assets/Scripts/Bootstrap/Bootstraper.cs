@@ -31,10 +31,19 @@ namespace Bootstrap
 			CellCreator cellCreator = new CellCreator();
 			ResultCellCreator resultCellCreator = new ResultCellCreator();
 
-			MechanismCreator mechanismCreator = new MechanismCreator(wheelCreator, cellCreator, resultCellCreator);
+			MechanismCreator mechanismCreator = new MechanismCreator(
+				wheelCreator,
+				cellCreator,
+				resultCellCreator);
 
-			MenuCreator menuCreator = new MenuCreator(dataSourceManager, dataSourceManager);
-			LevelCreator levelCreator = new LevelCreator(dataSourceManager, mathPuzzleCreator, mechanismCreator, controller);
+			MenuCreator menuCreator = new MenuCreator(
+				dataSourceManager,
+				dataSourceManager);
+			LevelCreator levelCreator = new LevelCreator(
+				dataSourceManager,
+				mathPuzzleCreator,
+				mechanismCreator,
+				controller);
 
 			_sceneLoader = new SceneLoader(curtain, this, levelCreator, menuCreator);
 		}

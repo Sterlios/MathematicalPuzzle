@@ -121,8 +121,10 @@ namespace LevelScene.Objects
 				yield return null;
 			}
 
-			if (Mathf.Abs(transform.rotation.eulerAngles.y - _currentAngle) > correctingEpsilon)
-				transform.Rotate(Quaternion.AngleAxis(_currentAngle - transform.rotation.eulerAngles.y, Vector3.up).eulerAngles);
+			float newAngle = _currentAngle - transform.rotation.eulerAngles.y;
+
+			if (Mathf.Abs(newAngle) > correctingEpsilon)
+				transform.Rotate(Quaternion.AngleAxis(newAngle, Vector3.up).eulerAngles);
 		}
 
 		private void CalculateSize()

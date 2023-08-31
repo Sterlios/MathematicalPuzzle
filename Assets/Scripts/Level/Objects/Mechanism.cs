@@ -37,7 +37,10 @@ namespace LevelScene.Objects
 			}
 		}
 
-		public Mechanism Initialize(MathPuzzle puzzle, List<Wheel> wheels, ResultCell resultCell)
+		public Mechanism Initialize(
+			MathPuzzle puzzle,
+			List<Wheel> wheels,
+			ResultCell resultCell)
 		{
 			_wheels = wheels;
 			_puzzle = puzzle;

@@ -22,7 +22,11 @@ namespace SceneLoading
 		private Menu _menu;
 		private Level _level;
 
-		public SceneLoader(LoadingCurtain curtain, ICoroutineRunner coroutineRunner, LevelCreator levelCreator, MenuCreator menuCreator)
+		public SceneLoader(
+			LoadingCurtain curtain,
+			ICoroutineRunner coroutineRunner,
+			LevelCreator levelCreator,
+			MenuCreator menuCreator)
 		{
 			_curtain = curtain;
 			_coroutineRunner = coroutineRunner;

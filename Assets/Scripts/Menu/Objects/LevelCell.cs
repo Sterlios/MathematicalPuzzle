@@ -25,11 +25,6 @@ namespace MenuScene.Objects
 		private string Key => $"{_level.RowsCount}:{_level.WheelsCount}";
 		public LevelStatus Status => _status;
 
-		private void Awake()
-		{
-			//gameObject.Deactivate();
-		}
-
 		private void OnEnable()
 		{
 			UpdateStatus();

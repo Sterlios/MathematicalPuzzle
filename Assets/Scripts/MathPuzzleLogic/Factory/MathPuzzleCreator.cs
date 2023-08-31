@@ -80,7 +80,8 @@ namespace MathPuzzleLogic.Factory
 		private static void Shift(int[,] numbers, int depth)
 		{
 			for (int ray = 0; ray < numbers.GetLength(0) - 1; ray++)
-				(numbers[ray, depth], numbers[ray + 1, depth]) = (numbers[ray + 1, depth], numbers[ray, depth]);
+				(numbers[ray, depth], numbers[ray + 1, depth]) = 
+					(numbers[ray + 1, depth], numbers[ray, depth]);
 		}
 	}
 }
