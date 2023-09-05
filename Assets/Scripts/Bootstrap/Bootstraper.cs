@@ -36,11 +36,13 @@ namespace Bootstrap
 				cellCreator,
 				resultCellCreator);
 
+			UICreator uICreator = new UICreator();
 			MenuCreator menuCreator = new MenuCreator(
 				dataSourceManager,
 				dataSourceManager);
 			LevelCreator levelCreator = new LevelCreator(
 				dataSourceManager,
+				uICreator,
 				mathPuzzleCreator,
 				mechanismCreator,
 				controller);

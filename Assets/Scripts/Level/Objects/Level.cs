@@ -12,6 +12,7 @@ namespace LevelScene.Objects
 	public class Level : MonoBehaviour
 	{
 		private MechanismCreator _mechanismCreator;
+		private UICanvas _uICanvas;
 
 		private Controller _puzzleController;
 		private FinishPanel _finishPanel;
@@ -25,17 +26,17 @@ namespace LevelScene.Objects
 
 		private void Awake()
 		{
-			_backMenuButtons = FindObjectsOfType<BackMenuButton>();
+			_backMenuButtons = FindObjectsOfType<BackMenuButton>(); //TODO Use Other Method
 
-			_puzzleControl = FindObjectOfType<PuzzleControl>();
+			_puzzleControl = FindObjectOfType<PuzzleControl>(); //TODO Use Other Method
 
-			_finishPanel = FindObjectOfType<FinishPanel>();
+			_finishPanel = FindObjectOfType<FinishPanel>(); //TODO Use Other Method
 			gameObject.Deactivate();
 		}
 
 		private void OnEnable()
 		{
-			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
+			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>(); //TODO Use Other Method
 
 			foreach (BackMenuButton backMenuButton in _backMenuButtons)
 				backMenuButton.Clicked += MoveToMenu;
@@ -63,8 +64,11 @@ namespace LevelScene.Objects
 			ISaver saver,
 			MathPuzzle puzzle,
 			Controller puzzleController,
-			MechanismCreator mechanismCreator)
+			MechanismCreator mechanismCreator,
+			UICreator uICreator
+			)
 		{
+			_uICanvas = uICreator.Create();
 			_saver = saver;
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
