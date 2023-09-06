@@ -13,13 +13,10 @@ namespace LevelScene.Objects
 	{
 		private MechanismCreator _mechanismCreator;
 
+		private UICanvas _uICanvas;
 		private Controller _puzzleController;
-		private FinishPanel _finishPanel;
 		private MathPuzzle _puzzle;
-		private PuzzleControl _puzzleControl;
 		private ISaver _saver;
-
-		private BackMenuButton[] _backMenuButtons;
 
 		public event Action Exited;
 
@@ -32,7 +29,7 @@ namespace LevelScene.Objects
 		{
 			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>(); //TODO Use Other Method
 
-			foreach (BackMenuButton backMenuButton in _backMenuButtons)
+			foreach (BackMenuButton backMenuButton in _uICanvas.BackMenuButtons)
 				backMenuButton.Clicked += MoveToMenu;
 
 			_mechanismCreator.Create(spawnPoint, _puzzle);
@@ -40,12 +37,12 @@ namespace LevelScene.Objects
 			_puzzleController.Initialize(_puzzle);
 			_puzzle.Resolved += Finish;
 
-			_finishPanel.DeactivateAllPanels();
+			_uICanvas.FinishPanel.DeactivateAllPanels();
 		}
 
 		private void OnDisable()
 		{
-			foreach (BackMenuButton backMenuButton in _backMenuButtons)
+			foreach (BackMenuButton backMenuButton in _uICanvas.BackMenuButtons)
 				backMenuButton.Clicked -= MoveToMenu;
 
 			if (_puzzle is null)
@@ -62,17 +59,13 @@ namespace LevelScene.Objects
 			UICreator uICreator
 			)
 		{
-			UICanvas uICanvas = uICreator.Create();
+			_uICanvas = uICreator.Create();
 			_saver = saver;
 			_puzzle = puzzle;
 			_puzzleController = puzzleController;
 			_mechanismCreator = mechanismCreator;
-			_puzzleControl.Initialize(_puzzle);
+			_uICanvas.PuzzleControl.Initialize(_puzzle);
 			
-			_backMenuButtons = uICanvas.GetBackMenuButtons();
-			_puzzleControl = uICanvas.GetPuzzleControl();
-			_finishPanel = uICanvas.GetFinishPanel();
-
 			gameObject.Activate();
 		}
 
@@ -84,8 +77,8 @@ namespace LevelScene.Objects
 		private void Finish()
 		{
 			_saver.Save(_puzzle.SaverKey, LevelStatus.Done);
-			
-			_finishPanel.ActivateWinPanel();
+
+			_uICanvas.FinishPanel.ActivateWinPanel();
 		}
 	}
 }

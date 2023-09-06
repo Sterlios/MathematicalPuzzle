@@ -6,19 +6,15 @@ namespace LevelScene
 {
 	public class UICanvas : MonoBehaviour
 	{
-		internal BackMenuButton[] GetBackMenuButtons() // Relize
-		{
-			throw new NotImplementedException();
-		}
+		internal BackMenuButton[] BackMenuButtons { get; private set; }
+		internal PuzzleControl PuzzleControl { get; private set; }
+		internal FinishPanel FinishPanel { get; private set; }
 
-		internal PuzzleControl GetPuzzleControl() // Relize
+		private void Awake()
 		{
-			throw new NotImplementedException();
-		}
-
-		internal FinishPanel GetFinishPanel() // Relize
-		{
-			throw new NotImplementedException();
+			BackMenuButtons = GetComponentsInChildren<BackMenuButton>();
+			PuzzleControl = GetComponentInChildren<PuzzleControl>();
+			FinishPanel = GetComponentInChildren<FinishPanel>();
 		}
 	}
 }

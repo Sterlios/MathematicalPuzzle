@@ -2639,6 +2639,7 @@ GameObject:
   - component: {fileID: 110878037189539469}
   - component: {fileID: 110878037189539466}
   - component: {fileID: 110878037189539467}
+  - component: {fileID: 3402913528888553578}
   m_Layer: 5
   m_Name: LevelUICanvas
   m_TagString: Untagged
@@ -2730,6 +2731,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3402913528888553578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110878037189539464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a9fd82228ab3e488bb7fefc938e897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &110878037292504605
 GameObject:
   m_ObjectHideFlags: 0
