@@ -1,20 +1,19 @@
-using TMPro;
 using UnityEngine;
 
 namespace LevelScene.Objects
 {
 	public class Cell : MonoBehaviour
 	{
-		private TMP_Text _valueText;
+		private CellNumber _cellNumber;
 
 		private void Awake()
 		{
-			_valueText = GetComponentInChildren<TextMeshPro>();
+			_cellNumber = GetComponentInChildren<CellNumber>();
 		}
 
 		public void Initialize(int value)
 		{
-			_valueText.text = value.ToString();
+			_cellNumber.Initialize(value);
 		}
 
 		internal void SetPosition(float radius)
@@ -27,6 +26,7 @@ namespace LevelScene.Objects
 		internal void Rotate(float angle, Vector3 centerPoint)
 		{
 			transform.RotateAround(centerPoint, Vector3.up, angle);
+			_cellNumber.ResetRotation();
 		}
 	}
 }
