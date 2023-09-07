@@ -27,12 +27,10 @@ namespace LevelScene.Objects
 
 		private void OnEnable()
 		{
-			SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>(); //TODO Use Other Method
-
 			foreach (BackMenuButton backMenuButton in _uICanvas.BackMenuButtons)
 				backMenuButton.Clicked += MoveToMenu;
 
-			_mechanismCreator.Create(spawnPoint, _puzzle);
+			_mechanismCreator.Create(_puzzle);
 
 			_puzzleController.Initialize(_puzzle);
 			_puzzle.Resolved += Finish;
@@ -42,8 +40,9 @@ namespace LevelScene.Objects
 
 		private void OnDisable()
 		{
-			foreach (BackMenuButton backMenuButton in _uICanvas.BackMenuButtons)
-				backMenuButton.Clicked -= MoveToMenu;
+			if(_uICanvas != null)
+				foreach (BackMenuButton backMenuButton in _uICanvas.BackMenuButtons)
+					backMenuButton.Clicked -= MoveToMenu;
 
 			if (_puzzle is null)
 				return;

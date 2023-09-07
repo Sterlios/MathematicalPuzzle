@@ -22,13 +22,15 @@ namespace LevelScene.Factories
 			_resultCellCreator = resultCellCreator;
 		}
 
-		public Mechanism Create(SpawnPoint at, MathPuzzle puzzle)
+		public Mechanism Create(MathPuzzle puzzle)
 		{
+			Vector3 spawnPoint = new Vector3(0, 1.89f, 0);
+
 			ResultCell resultCell = _resultCellCreator.Create(puzzle.Goal);
 			List<Wheel> wheels = GenerateWheels(puzzle);
 
 			Mechanism mechanismPrefab = Resources.Load<Mechanism>(_mechanismPrefabPath);
-			Mechanism mechanism = Object.Instantiate(mechanismPrefab, at.transform.position, Quaternion.identity);
+			Mechanism mechanism = Object.Instantiate(mechanismPrefab, spawnPoint, Quaternion.identity);
 			mechanism = mechanism.Initialize(puzzle, wheels, resultCell);
 
 			return mechanism;
