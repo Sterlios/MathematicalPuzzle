@@ -4,13 +4,18 @@ using UnityEngine;
 namespace LevelScene.Objects
 {
 	[RequireComponent(typeof(TextMeshPro))]
+	[RequireComponent(typeof(RectTransform))]
 	public class CellNumber : MonoBehaviour
 	{
 		private TextMeshPro _number;
+		private RectTransform _rectTransform;
+		private Quaternion _defaultAngle;
 
 		private void Awake()
 		{
+			_rectTransform = GetComponent<RectTransform>();
 			_number = GetComponent<TextMeshPro>();
+			_defaultAngle = _rectTransform.localRotation;
 		}
 
 		public void Initialize(int value)
@@ -20,7 +25,7 @@ namespace LevelScene.Objects
 
 		public void ResetRotation()
 		{
-			transform.rotation = new Quaternion(90f,0,0,1);
+			_rectTransform.rotation = _defaultAngle;
 		}
 	}
 }

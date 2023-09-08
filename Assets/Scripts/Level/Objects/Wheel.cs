@@ -118,6 +118,9 @@ namespace LevelScene.Objects
 			{
 				transform.Rotate(Quaternion.AngleAxis(angleStep, Vector3.up).eulerAngles);
 
+				foreach (Cell cell in _cells)
+					cell.ResetNumberRotation();
+
 				yield return null;
 			}
 
